@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=3 uid="uid://vcxkmxke8syl"]
+
+[ext_resource type="Script" path="res://scenes/new folder/Script/Ecosystem.gd" id="1_8fkrr"]
+[ext_resource type="Texture2D" uid="uid://djfuaixlh20u5" path="res://resource/sprites/Background/Table.jpg" id="2_q2y8a"]
+[ext_resource type="Texture2D" uid="uid://cvm2r3ba0ppkg" path="res://resource/sprites/Background/Bottle.png" id="3_0riki"]
+[ext_resource type="Texture2D" uid="uid://bt5kbty33wbof" path="res://resource/sprites/Plants/flower1.png" id="4_5ocu0"]
+
+[node name="Ecosystem" type="Node2D"]
+script = ExtResource("1_8fkrr")
+
+[node name="Table" type="Sprite2D" parent="."]
+position = Vector2(576, 323)
+scale = Vector2(4.44015, 3.33505)
+texture = ExtResource("2_q2y8a")
+
+[node name="Bottle" type="Sprite2D" parent="."]
+position = Vector2(473, 343)
+scale = Vector2(1.318, 1)
+texture = ExtResource("3_0riki")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(476, 345)
+texture = ExtResource("4_5ocu0")
+
+[node name="MistingSystemButton" type="Button" parent="."]
+offset_left = 93.0
+offset_top = 166.0
+offset_right = 161.0
+offset_bottom = 202.0
+action_mode = 0
+text = "Misting"
+
+[node name="OpenCurtainsButton" type="Button" parent="."]
+offset_left = 93.0
+offset_top = 221.0
+offset_right = 161.0
+offset_bottom = 257.0
+text = "Curtain"
+
+[node name="PlantButton" type="Button" parent="."]
+offset_left = 93.0
+offset_top = 281.0
+offset_right = 161.0
+offset_bottom = 317.0
+text = "Plant"
+
+[node name="TemperatureLabel" type="Label" parent="."]
+offset_left = 441.0
+offset_top = 608.0
+offset_right = 488.0
+offset_bottom = 642.0
+text = "1"
+
+[node name="CreatureCountLabel" type="Label" parent="."]
+offset_left = 847.0
+offset_top = 539.0
+offset_right = 887.0
+offset_bottom = 565.0
+text = "1"
+
+[node name="HumidityProgressBar" type="ProgressBar" parent="."]
+offset_left = 49.0
+offset_top = 540.0
+offset_right = 127.0
+offset_bottom = 567.0
+
+[node name="DaysLabel" type="Label" parent="."]
+offset_left = 14.0
+offset_top = 412.0
+offset_right = 78.0
+offset_bottom = 438.0
+text = "Day1"
+
+[node name="NextDayButton" type="Button" parent="."]
+offset_left = 705.0
+offset_top = 322.0
+offset_right = 856.0
+offset_bottom = 460.0
+text = "Next"
+
+[connection signal="button_down" from="MistingSystemButton" to="." method="_on_MistingSystemButton_pressed"]
+[connection signal="pressed" from="MistingSystemButton" to="." method="_on_misting_system_button_pressed"]
+[connection signal="button_down" from="OpenCurtainsButton" to="." method="_on_OpenCurtainsButton_pressed"]
+[connection signal="pressed" from="OpenCurtainsButton" to="." method="_on_open_curtains_button_pressed"]
+[connection signal="button_down" from="PlantButton" to="." method="_on_PlantButton_pressed"]
+[connection signal="pressed" from="PlantButton" to="." method="_on_plant_button_pressed"]
+[connection signal="ready" from="TemperatureLabel" to="." method="_on_temperature_label_ready"]
+[connection signal="ready" from="CreatureCountLabel" to="." method="_on_creature_count_label_ready"]
+[connection signal="changed" from="HumidityProgressBar" to="." method="_on_humidity_progress_bar_changed"]
+[connection signal="property_list_changed" from="HumidityProgressBar" to="." method="_on_humidity_progress_bar_property_list_changed"]
+[connection signal="ready" from="HumidityProgressBar" to="." method="_on_humidity_progress_bar_ready"]
+[connection signal="ready" from="DaysLabel" to="." method="_on_days_label_ready"]
+[connection signal="pressed" from="NextDayButton" to="." method="_on_next_day_button_pressed"]

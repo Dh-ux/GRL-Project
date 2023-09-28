@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfvcacton2rb0"]
-
-[ext_resource type="Texture2D" uid="uid://bt5kbty33wbof" path="res://sprites/New folder/Plants/flower1.png" id="1_rxhr4"]
-
-[node name="flower" type="Sprite2D"]
-position = Vector2(291.25, 429.25)
-scale = Vector2(0.5, 0.487234)
-texture = ExtResource("1_rxhr4")
