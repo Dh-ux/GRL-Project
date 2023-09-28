@@ -71,7 +71,7 @@ func placePlant():
 	updateUI()
 
 func addPlant():
-	var flower_scene = preload("res://scenes/new folder/flower.tscn")
+	var flower_scene = preload("res://flower.tscn")
 	var flower_instance = flower_scene.instantiate() as Sprite2D
 	if flower_instance != null:
 		print("Successfully instantiated flower_instance")
