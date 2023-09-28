@@ -1,10 +1,12 @@
 extends Node2D
 
+var life_list = []
 # Ecosystem attributes
 @export var temperature = 25
 @export var humidity = 50
 var creature_count = 0
 var days=0
+signal day_end
 
 # UI elements
 @onready var temperatureLabel = $TemperatureLabel
@@ -20,22 +22,21 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		next_day()
-		
-func next_day():
-	days+=1
-	var growth =0
-	if temperature>=24 and temperature <=32:
-		var temp_growth = temperature -24
-		print("temperature is right!")
-		if humidity >= 60 and humidity <= 90:
-			var humid_growth = humidity - 60
-			print("humidity is right!")
-			growth = temp_growth * humid_growth * creature_count		
-	if growth>=1:
-		creature_count += 1
-		growth=0
-		addPlant()
+
+
+func register(object):
+	#if object.type == 0
+	creature_count+=1
+	object.tree_exited.connect(unregister)
+	updateUI()
 	
+func unregister(type = 0):
+	creature_count-=1
+
+func next_day():
+#	for i in life_list:
+#		i.on_next_day()
+	emit_signal('day_end')
 	# Update attributes
 	temperature = randf_range(temperature-2, temperature+2)		
 	humidity = randf_range(humidity-10, humidity+10)	
@@ -60,7 +61,6 @@ func openCurtains():
 
 func placePlant():
 	# Increase creature count, humidity, and decrease temperature
-	creature_count += 1
 	humidity += 5
 	temperature -= 2
 	addPlant()
@@ -71,16 +71,16 @@ func placePlant():
 	updateUI()
 
 func addPlant():
-	var flower_scene = preload("res://flower.tscn")
-	var flower_instance = flower_scene.instantiate() as Sprite2D
+	var flower_scene = load("res://flower.tscn")
+	var flower_instance = flower_scene.instantiate()
 	if flower_instance != null:
 		print("Successfully instantiated flower_instance")
 		var plant_positions = []
 		var random_x
 		var random_y
 		while true:
-			random_x = randf_range(345, 600)
-			random_y = randf_range(360, 380)
+			random_x = randf_range(395, 550)
+			random_y = randf_range(380, 400)
 			var overlapping = false
 			# Check for overlap with existing plant positions
 			for existing_position in plant_positions:
@@ -129,15 +129,15 @@ func _on_next_day_button_pressed():
 
 
 func _on_misting_system_button_pressed():
-	pass # Replace with function body.
+	activateMistingSystem()
 
 
 func _on_open_curtains_button_pressed():
-	pass # Replace with function body.
+	openCurtains()
 
 
 func _on_plant_button_pressed():
-	pass # Replace with function body.
+	placePlant()
 
 
 func _on_creature_count_label_ready():

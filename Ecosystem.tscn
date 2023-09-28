@@ -68,8 +68,8 @@ offset_bottom = 565.0
 [node name="NextDayButton" type="Button" parent="."]
 offset_left = 815.0
 offset_top = 305.0
-offset_right = 904.0
-offset_bottom = 360.0
+offset_right = 951.0
+offset_bottom = 521.0
 text = "Next"
 
 [connection signal="pressed" from="MistingSystemButton" to="." method="_on_misting_system_button_pressed"]

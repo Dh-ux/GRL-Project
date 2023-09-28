@@ -37,7 +37,7 @@ func calculate_growth():
 	
 
 func addPlant():
-	var flower_scene = load("res://flower.tscn")
+	var flower_scene = load("res://bugs.tscn")
 	var flower_instance = flower_scene.instantiate()
 	if flower_instance != null:
 		print("Successfully instantiated flower_instance")
@@ -69,6 +69,7 @@ func addPlant():
 		get_parent().add_child(flower_instance)
 	else:
 		print("flower_instance is null")
+
 
 
 func on_next_day():
