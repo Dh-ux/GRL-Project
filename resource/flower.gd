@@ -25,8 +25,8 @@ func update_eco():
 
 #here goes the main algorithm
 func calculate_growth():
-	var temp_growth = 0.5
-	var humid_growth = 0.5
+	var temp_growth = 0.2
+	var humid_growth = 0.2
 	if temperature>=24 and temperature <=32:
 		temp_growth = temperature/28
 		#print("temperature is right!")

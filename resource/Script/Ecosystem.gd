@@ -7,6 +7,7 @@ var life_list = []
 var creature_count = 0
 var days=0
 signal day_end
+var action_points = 3
 
 # UI elements
 @onready var temperatureLabel = $TemperatureLabel
@@ -14,6 +15,7 @@ signal day_end
 @onready var creatureCountLabel = $CreatureCountLabel
 @onready var daysLabel = $DaysLabel
 @onready var next_day_button = $NextDayButton 
+@onready var action_pointsLabel = $Action_pointsLabel
 
 func _ready():
 	# Initialize UI
@@ -37,38 +39,44 @@ func next_day():
 #	for i in life_list:
 #		i.on_next_day()
 	emit_signal('day_end')
+	days+=1
+	$MistingSystemButton.disabled = false
+	$OpenCurtainsButton.disabled = false
+	$PlantButton.disabled = false
 	# Update attributes
 	temperature = randf_range(temperature-2, temperature+2)		
-	humidity = randf_range(humidity-10, humidity+10)	
+	humidity = randf_range(humidity-10, humidity+10)
+	action_points = 3	
 	
 	updateUI()
 			
 func activateMistingSystem():
 	# Increase humidity
-	humidity += 10
-	print("Misting button pressed")
+	if checkActionPoints():
+		humidity += 10
+		print("Misting button pressed")
+		updateUI()
 
 	# Update other attributes and game mechanics
-	updateUI()
 
 func openCurtains():
 	# Increase sunlight and temperature
-	temperature += 5
-	print("Curtain button pressed")
+	if checkActionPoints():
+		temperature += 5
+		print("Curtain button pressed")
+		updateUI()
 
 	# Update other attributes and game mechanics
-	updateUI()
 
 func placePlant():
 	# Increase creature count, humidity, and decrease temperature
-	humidity += 5
-	temperature -= 2
-	addPlant()
-	print("Plant button pressed")
-	
-
+	if checkActionPoints():
+		humidity += 5
+		temperature -= 2
+		addPlant()
+		print("Plant button pressed")
+		updateUI()
 	# Update other attributes and game mechanics
-	updateUI()
 
 func addPlant():
 	var flower_scene = load("res://flower.tscn")
@@ -107,38 +115,28 @@ func addPlant():
 
 
 func updateUI():
+	if action_points<=0:
+		$MistingSystemButton.disabled = true
+		$OpenCurtainsButton.disabled = true
+		$PlantButton.disabled = true
 	temperatureLabel.text = "Temperature: " + str(temperature)
 	humidityProgressBar.value = humidity
 	creatureCountLabel.text = "Creature Count: " + str(creature_count)
 	daysLabel.text="Days: " + str(days)
+	action_pointsLabel.text="Action points Left: " +str(action_points)
+		
+func checkActionPoints():
+	if action_points>0:
+		action_points -=1
+		print("action remain!")
+		return true
+	print("no action remain!")	
+	return false	
 
-func _on_MistingSystemButton_pressed():
-	# Player clicks on the misting system button
-	activateMistingSystem()
 
-func _on_OpenCurtainsButton_pressed():
-	# Player clicks on the open curtains button
-	openCurtains()
-
-func _on_PlantButton_pressed():
-	# Player clicks on the plant button
-	placePlant()
 	
 func _on_next_day_button_pressed():
 	next_day()
-
-
-func _on_misting_system_button_pressed():
-	activateMistingSystem()
-
-
-func _on_open_curtains_button_pressed():
-	openCurtains()
-
-
-func _on_plant_button_pressed():
-	placePlant()
-
 
 func _on_creature_count_label_ready():
 	pass # Replace with function body.
@@ -162,3 +160,19 @@ func _on_humidity_progress_bar_changed():
 
 func _on_days_label_ready():
 	pass # Replace with function body.
+
+
+func _on_action_points_label_ready():
+	pass # Replace with function body.
+
+
+func _on_open_curtains_button_pressed():
+	openCurtains()
+
+
+func _on_plant_button_pressed():
+	placePlant()
+
+
+func _on_misting_system_button_pressed():
+	activateMistingSystem()

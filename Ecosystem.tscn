@@ -60,17 +60,24 @@ offset_bottom = 566.0
 text = "Creature Count: 1"
 
 [node name="HumidityProgressBar" type="ProgressBar" parent="."]
-offset_left = 804.0
-offset_top = 538.0
-offset_right = 942.0
-offset_bottom = 565.0
+offset_left = 816.0
+offset_top = 489.0
+offset_right = 954.0
+offset_bottom = 516.0
 
 [node name="NextDayButton" type="Button" parent="."]
-offset_left = 815.0
-offset_top = 305.0
-offset_right = 951.0
-offset_bottom = 521.0
+offset_left = 814.0
+offset_top = 363.0
+offset_right = 950.0
+offset_bottom = 444.0
 text = "Next"
+
+[node name="Action_pointsLabel" type="Label" parent="."]
+offset_left = 828.0
+offset_top = 550.0
+offset_right = 868.0
+offset_bottom = 576.0
+text = "4"
 
 [connection signal="pressed" from="MistingSystemButton" to="." method="_on_misting_system_button_pressed"]
 [connection signal="pressed" from="OpenCurtainsButton" to="." method="_on_open_curtains_button_pressed"]
@@ -80,3 +87,4 @@ text = "Next"
 [connection signal="ready" from="CreatureCountLabel" to="." method="_on_creature_count_label_ready"]
 [connection signal="ready" from="HumidityProgressBar" to="." method="_on_humidity_progress_bar_ready"]
 [connection signal="pressed" from="NextDayButton" to="." method="_on_next_day_button_pressed"]
+[connection signal="ready" from="Action_pointsLabel" to="." method="_on_action_points_label_ready"]
