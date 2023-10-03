@@ -9,6 +9,7 @@ var days=0
 signal day_end
 var action_points = 3
 
+var initial_plant = false
 # UI elements
 @onready var temperatureLabel = $TemperatureLabel
 @onready var humidityProgressBar = $HumidityProgressBar
@@ -104,7 +105,11 @@ func addPlant():
 #		var random_y = randf_range(360, 380)  # Adjust the range as needed
 #		# Set the plant's position
 		flower_instance.position = Vector2(random_x, random_y)
+		if initial_plant:
+			flower_instance.growth = randf_range(0.3,0.7)
+		initial_plant = true
 		get_tree().get_root().add_child(flower_instance)
+
 	else:
 		print("flower_instance is null")
 #	get_tree().get_root().add_child(flower_instance)

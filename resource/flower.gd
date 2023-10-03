@@ -4,6 +4,12 @@ var eco_system
 var humidity
 var temperature
 
+@export var base_growth_per_day = 0.5
+@export var humidity_target = 75
+@export var humidity_range = 15
+@export var temp_target = 75
+@export var temp_range = 15
+
 var type
 var growth = 1
 var days =0
@@ -15,6 +21,8 @@ func _ready():
 	eco_system.register(self)
 	eco_system.day_end.connect(on_next_day)
 	update_eco()
+	var temp = remap(growth,0.1,3,0.4,1)
+	scale = Vector2(temp,temp)*scale_modifier
 
 func _process(delta):
 	pass
@@ -28,12 +36,12 @@ func calculate_growth():
 	var temp_growth = 0.2
 	var humid_growth = 0.2
 	if temperature>=24 and temperature <=32:
-		temp_growth = temperature/28
+		temp_growth = temperature/28 * 0.5
 		#print("temperature is right!")
 		if humidity >= 60 and humidity <= 90:
-			humid_growth = humidity/75
+			humid_growth = humidity/75 * 0.5
 			#print("humidity is right!")
-	growth += temp_growth * humid_growth	
+	growth += (temp_growth + humid_growth) * base_growth_per_day
 	
 
 func addPlant():
@@ -44,7 +52,7 @@ func addPlant():
 		var plant_positions = []
 		var random_x= get_position().x + randf_range(120, -120)
 		var random_y= get_position().y + randf_range(20, -20)
-		var new_scale = randf_range(0.6,1)
+		var new_growth = randf_range(0.3,0.6)
 		random_x = clamp(random_x,345,600)
 #		while true:
 #			random_x = randf_range(345, 600)
@@ -64,7 +72,7 @@ func addPlant():
 #		var random_y = randf_range(360, 380)  # Adjust the range as needed
 #		# Set the plant's position
 		flower_instance.position = Vector2(random_x, random_y)
-		flower_instance.growth = new_scale
+		flower_instance.growth = new_growth
 		flower_instance.scale_modifier = randf_range(0.7,1)
 		get_parent().add_child(flower_instance)
 	else:
@@ -75,11 +83,13 @@ func on_next_day():
 	update_eco()
 	days+=1
 	calculate_growth()
-	await get_tree().create_timer(1).timeout
+	#connect the finish day signal
+	await get_tree().create_timer(0.1).timeout
 	if growth>=1:
-		if growth >=3:
-			growth = 3
+		if growth >=2:
+			growth = 2
 		addPlant()
+		growth -= 0.5
 		var temp = remap(growth,0.5,3,0.5,1)
 		scale = Vector2(temp,temp)*scale_modifier
 	
