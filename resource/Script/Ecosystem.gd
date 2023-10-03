@@ -18,6 +18,19 @@ var initial_plant = false
 @onready var next_day_button = $NextDayButton 
 @onready var action_pointsLabel = $Action_pointsLabel
 
+enum PlantType {
+  FLOWER,
+  BUSH
+}
+
+enum Weather {
+  SUNNY, 
+  CLOUDY,
+  RAINY
+}
+
+var selected_plant = PlantType.FLOWER
+
 func _ready():
 	# Initialize UI
 	updateUI()
@@ -45,8 +58,19 @@ func next_day():
 	$OpenCurtainsButton.disabled = false
 	$PlantButton.disabled = false
 	# Update attributes
-	temperature = randf_range(temperature-2, temperature+2)		
-	humidity = randf_range(humidity-10, humidity+10)
+	var weather = Weather.values()[randi() % Weather.size()]
+	if weather == Weather.SUNNY:
+		temperature += 2
+		humidity -= 10
+		$Weather.texture = load("res://resource/sprites/Background/sunny.png")
+	elif weather == Weather.CLOUDY:
+		humidity -= 5	
+		$Weather.texture = load("res://resource/sprites/Background/cloudy.jpg")
+	elif weather == Weather.RAINY:
+		temperature -= 2
+		$Weather.texture = load("res://resource/sprites/Background/rainy.png")	
+#	temperature = randf_range(temperature-2, temperature+2)		
+#	humidity = randf_range(humidity-10, humidity+10)
 	action_points = 3	
 	
 	updateUI()
@@ -69,18 +93,24 @@ func openCurtains():
 
 	# Update other attributes and game mechanics
 
-func placePlant():
+func placePlant(type):
 	# Increase creature count, humidity, and decrease temperature
 	if checkActionPoints():
-		humidity += 5
-		temperature -= 2
-		addPlant()
+		addPlant(type)
 		print("Plant button pressed")
 		updateUI()
 	# Update other attributes and game mechanics
 
-func addPlant():
-	var flower_scene = load("res://flower.tscn")
+func addPlant(type):
+	var flower_scene
+	if type == PlantType.FLOWER:
+		flower_scene = load("res://flower.tscn")
+		humidity += 5
+		temperature -= 2
+	elif type == PlantType.BUSH:
+		flower_scene = load("res://bush.tscn")
+		humidity += 1
+		temperature -= 2
 	var flower_instance = flower_scene.instantiate()
 	if flower_instance != null:
 		print("Successfully instantiated flower_instance")
@@ -124,6 +154,7 @@ func updateUI():
 		$MistingSystemButton.disabled = true
 		$OpenCurtainsButton.disabled = true
 		$PlantButton.disabled = true
+		$PlantPanel.hide()
 	temperatureLabel.text = "Temperature: " + str(temperature)
 	humidityProgressBar.value = humidity
 	creatureCountLabel.text = "Creature Count: " + str(creature_count)
@@ -176,8 +207,18 @@ func _on_open_curtains_button_pressed():
 
 
 func _on_plant_button_pressed():
-	placePlant()
+	$PlantPanel.visible = !$PlantPanel.visible
 
+func _on_plant_selected(id):
+	selected_plant = id
 
 func _on_misting_system_button_pressed():
 	activateMistingSystem()
+
+
+func _on_flower_pressed():
+	placePlant(0) # Replace with function body.
+
+
+func _on_bush_pressed():
+	placePlant(1)
