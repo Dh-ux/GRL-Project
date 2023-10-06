@@ -6,21 +6,22 @@
 [ext_resource type="Texture2D" uid="uid://764onhxsr250" path="res://resource/sprites/Background/sunny.png" id="4_0qht8"]
 
 [node name="Ecosystem" type="Node2D"]
+scale = Vector2(1.11432, 1.01086)
 script = ExtResource("1_fni7g")
 
 [node name="Table" type="Sprite2D" parent="."]
-position = Vector2(575.125, 324)
-scale = Vector2(4.42375, 3.3299)
+position = Vector2(573.5, 323)
+scale = Vector2(4.4363, 3.34021)
 texture = ExtResource("2_y87am")
 
 [node name="Bottle" type="Sprite2D" parent="."]
-position = Vector2(500, 338)
-scale = Vector2(1.112, 1)
+position = Vector2(505.239, 338.324)
+scale = Vector2(1.05287, 1)
 texture = ExtResource("3_opgfq")
 
 [node name="Weather" type="Sprite2D" parent="."]
-position = Vector2(933, 108)
-scale = Vector2(0.442222, 0.411111)
+position = Vector2(928.467, 108)
+scale = Vector2(0.401932, 0.411111)
 texture = ExtResource("4_0qht8")
 
 [node name="MistingSystemButton" type="Button" parent="."]
@@ -47,8 +48,8 @@ text = "Plant"
 [node name="TemperatureLabel" type="Label" parent="."]
 offset_left = 467.0
 offset_top = 615.0
-offset_right = 507.0
-offset_bottom = 638.0
+offset_right = 587.0
+offset_bottom = 641.0
 text = "Temperature: 1"
 
 [node name="DaysLabel" type="Label" parent="."]
@@ -68,13 +69,13 @@ text = "Creature Count: 1"
 [node name="HumidityProgressBar" type="ProgressBar" parent="."]
 offset_left = 816.0
 offset_top = 489.0
-offset_right = 954.0
+offset_right = 932.0
 offset_bottom = 516.0
 
 [node name="NextDayButton" type="Button" parent="."]
 offset_left = 814.0
 offset_top = 363.0
-offset_right = 950.0
+offset_right = 935.0
 offset_bottom = 444.0
 text = "Next"
 
@@ -93,6 +94,7 @@ offset_right = 327.0
 offset_bottom = 425.0
 
 [node name="flower" type="Button" parent="PlantPanel"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 11.0
 offset_right = 71.0
