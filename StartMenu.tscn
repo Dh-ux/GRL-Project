@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://b50oaplnp1dkc"]
+
+[ext_resource type="Script" path="res://resource/Script/StartMenu.gd" id="1_fah51"]
+[ext_resource type="Texture2D" uid="uid://8sarfw7el1lj" path="res://resource/sprites/Background/StartMenu.png" id="2_vvm7b"]
+
+[node name="StartMenu" type="Node2D"]
+script = ExtResource("1_fah51")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(638, 350)
+scale = Vector2(1.00078, 1.00139)
+texture = ExtResource("2_vvm7b")
+
+[node name="Start" type="Button" parent="."]
+offset_left = 575.0
+offset_top = 348.0
+offset_right = 706.0
+offset_bottom = 404.0
+text = "Start"
+
+[node name="Credit" type="Button" parent="."]
+offset_left = 575.0
+offset_top = 444.0
+offset_right = 706.0
+offset_bottom = 500.0
+text = "Credit"
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 575.0
+offset_top = 532.0
+offset_right = 706.0
+offset_bottom = 588.0
+text = "Exit"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Credit" to="." method="_on_credit_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

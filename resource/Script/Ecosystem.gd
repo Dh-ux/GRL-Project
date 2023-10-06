@@ -69,11 +69,19 @@ func next_day():
 	elif weather == Weather.RAINY:
 		temperature -= 2
 		$Weather.texture = load("res://resource/sprites/Background/rainy.png")	
+		
+	if days == 3:
+		if creature_count < 6:	
+			game_over()
 #	temperature = randf_range(temperature-2, temperature+2)		
 #	humidity = randf_range(humidity-10, humidity+10)
 	action_points = 3	
 	
+	
 	updateUI()
+
+func game_over():
+	get_tree().change_scene_to_file("res://gameover.tscn")
 			
 func activateMistingSystem():
 	# Increase humidity
@@ -222,3 +230,7 @@ func _on_flower_pressed():
 
 func _on_bush_pressed():
 	placePlant(1)
+
+
+func _on_continue_pressed():
+	$GuidePanel.visible = false

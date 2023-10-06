@@ -15,76 +15,76 @@ scale = Vector2(4.4363, 3.34021)
 texture = ExtResource("2_y87am")
 
 [node name="Bottle" type="Sprite2D" parent="."]
-position = Vector2(505.239, 338.324)
+position = Vector2(565.057, 329.994)
 scale = Vector2(1.05287, 1)
 texture = ExtResource("3_opgfq")
 
 [node name="Weather" type="Sprite2D" parent="."]
-position = Vector2(928.467, 108)
+position = Vector2(988.284, 99.6698)
 scale = Vector2(0.401932, 0.411111)
 texture = ExtResource("4_0qht8")
 
 [node name="MistingSystemButton" type="Button" parent="."]
-offset_left = 90.0
-offset_top = 187.0
-offset_right = 167.0
-offset_bottom = 233.0
+offset_left = 149.817
+offset_top = 178.67
+offset_right = 226.817
+offset_bottom = 224.67
 text = "Misting"
 
 [node name="OpenCurtainsButton" type="Button" parent="."]
-offset_left = 92.0
-offset_top = 273.0
-offset_right = 169.0
-offset_bottom = 319.0
+offset_left = 151.818
+offset_top = 264.67
+offset_right = 228.818
+offset_bottom = 310.67
 text = "Curtain"
 
 [node name="PlantButton" type="Button" parent="."]
-offset_left = 93.0
-offset_top = 356.0
-offset_right = 170.0
-offset_bottom = 402.0
+offset_left = 152.818
+offset_top = 347.67
+offset_right = 229.818
+offset_bottom = 393.67
 text = "Plant"
 
 [node name="TemperatureLabel" type="Label" parent="."]
-offset_left = 467.0
-offset_top = 615.0
-offset_right = 587.0
-offset_bottom = 641.0
-text = "Temperature: 1"
+offset_left = 501.651
+offset_top = 605.425
+offset_right = 630.651
+offset_bottom = 631.425
+text = "Temperature: 25"
 
 [node name="DaysLabel" type="Label" parent="."]
-offset_left = 39.0
-offset_top = 473.0
-offset_right = 159.0
-offset_bottom = 499.0
-text = "Day: 1"
+offset_left = 98.8175
+offset_top = 464.67
+offset_right = 218.817
+offset_bottom = 490.67
+text = "Day: 0"
 
 [node name="CreatureCountLabel" type="Label" parent="."]
-offset_left = 38.0
-offset_top = 540.0
-offset_right = 191.0
-offset_bottom = 566.0
-text = "Creature Count: 1"
+offset_left = 97.8175
+offset_top = 531.67
+offset_right = 250.817
+offset_bottom = 557.67
+text = "Creature Count: 0"
 
 [node name="HumidityProgressBar" type="ProgressBar" parent="."]
-offset_left = 816.0
-offset_top = 489.0
-offset_right = 932.0
-offset_bottom = 516.0
+offset_left = 875.818
+offset_top = 480.67
+offset_right = 991.818
+offset_bottom = 507.67
 
 [node name="NextDayButton" type="Button" parent="."]
-offset_left = 814.0
-offset_top = 363.0
-offset_right = 935.0
-offset_bottom = 444.0
+offset_left = 873.818
+offset_top = 354.67
+offset_right = 994.818
+offset_bottom = 435.67
 text = "Next"
 
 [node name="Action_pointsLabel" type="Label" parent="."]
-offset_left = 828.0
-offset_top = 550.0
-offset_right = 868.0
-offset_bottom = 576.0
-text = "4"
+offset_left = 887.818
+offset_top = 541.67
+offset_right = 1028.82
+offset_bottom = 567.67
+text = "Action points Left:"
 
 [node name="PlantPanel" type="Panel" parent="."]
 visible = false
@@ -109,6 +109,26 @@ offset_right = 136.0
 offset_bottom = 70.0
 text = "bush"
 
+[node name="GuidePanel" type="Panel" parent="."]
+offset_right = 1149.0
+offset_bottom = 647.0
+
+[node name="TextEdit" type="TextEdit" parent="GuidePanel"]
+layout_mode = 0
+offset_left = 252.172
+offset_top = 134.539
+offset_right = 876.172
+offset_bottom = 514.539
+text = "At the beginning of the story: "
+
+[node name="Continue" type="Button" parent="GuidePanel"]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 465.0
+offset_right = 592.0
+offset_bottom = 504.0
+text = "Continue"
+
 [connection signal="pressed" from="MistingSystemButton" to="." method="_on_misting_system_button_pressed"]
 [connection signal="pressed" from="OpenCurtainsButton" to="." method="_on_open_curtains_button_pressed"]
 [connection signal="pressed" from="PlantButton" to="." method="_on_plant_button_pressed"]
@@ -120,3 +140,4 @@ text = "bush"
 [connection signal="ready" from="Action_pointsLabel" to="." method="_on_action_points_label_ready"]
 [connection signal="pressed" from="PlantPanel/flower" to="." method="_on_flower_pressed"]
 [connection signal="pressed" from="PlantPanel/bush" to="." method="_on_bush_pressed"]
+[connection signal="pressed" from="GuidePanel/Continue" to="." method="_on_continue_pressed"]
