@@ -10,13 +10,13 @@ scale = Vector2(1.11432, 1.01086)
 script = ExtResource("1_fni7g")
 
 [node name="Table" type="Sprite2D" parent="."]
-position = Vector2(573.5, 323)
-scale = Vector2(4.4363, 3.34021)
+position = Vector2(573.5, 395.202)
+scale = Vector2(4.4363, 4.08457)
 texture = ExtResource("2_y87am")
 
 [node name="Bottle" type="Sprite2D" parent="."]
-position = Vector2(565.057, 329.994)
-scale = Vector2(1.05287, 1)
+position = Vector2(536.65, 473.077)
+scale = Vector2(1.27073, 1.04946)
 texture = ExtResource("3_opgfq")
 
 [node name="Weather" type="Sprite2D" parent="."]
@@ -25,73 +25,73 @@ scale = Vector2(0.401932, 0.411111)
 texture = ExtResource("4_0qht8")
 
 [node name="MistingSystemButton" type="Button" parent="."]
-offset_left = 149.817
-offset_top = 178.67
-offset_right = 226.817
-offset_bottom = 224.67
+offset_left = 44.8704
+offset_top = 321.508
+offset_right = 121.87
+offset_bottom = 367.508
 text = "Misting"
 
 [node name="OpenCurtainsButton" type="Button" parent="."]
-offset_left = 151.818
-offset_top = 264.67
-offset_right = 228.818
-offset_bottom = 310.67
+offset_left = 46.8714
+offset_top = 407.508
+offset_right = 123.871
+offset_bottom = 453.508
 text = "Curtain"
 
 [node name="PlantButton" type="Button" parent="."]
-offset_left = 152.818
-offset_top = 347.67
-offset_right = 229.818
-offset_bottom = 393.67
+offset_left = 47.8714
+offset_top = 490.508
+offset_right = 124.871
+offset_bottom = 536.508
 text = "Plant"
 
 [node name="TemperatureLabel" type="Label" parent="."]
-offset_left = 501.651
-offset_top = 605.425
-offset_right = 630.651
-offset_bottom = 631.425
+offset_left = 477.421
+offset_top = 703.361
+offset_right = 606.421
+offset_bottom = 729.361
 text = "Temperature: 25"
 
 [node name="DaysLabel" type="Label" parent="."]
-offset_left = 98.8175
-offset_top = 464.67
-offset_right = 218.817
-offset_bottom = 490.67
+offset_left = 70.1004
+offset_top = 644.006
+offset_right = 190.1
+offset_bottom = 670.006
 text = "Day: 0"
 
 [node name="CreatureCountLabel" type="Label" parent="."]
-offset_left = 97.8175
-offset_top = 531.67
-offset_right = 250.817
-offset_bottom = 557.67
+offset_left = 69.1004
+offset_top = 711.006
+offset_right = 222.1
+offset_bottom = 737.006
 text = "Creature Count: 0"
 
 [node name="HumidityProgressBar" type="ProgressBar" parent="."]
-offset_left = 875.818
-offset_top = 480.67
-offset_right = 991.818
-offset_bottom = 507.67
+offset_left = 878.768
+offset_top = 582.047
+offset_right = 994.768
+offset_bottom = 609.047
 
 [node name="NextDayButton" type="Button" parent="."]
-offset_left = 873.818
-offset_top = 354.67
-offset_right = 994.818
-offset_bottom = 435.67
+offset_left = 876.768
+offset_top = 456.047
+offset_right = 997.768
+offset_bottom = 537.047
 text = "Next"
 
 [node name="Action_pointsLabel" type="Label" parent="."]
-offset_left = 887.818
-offset_top = 541.67
-offset_right = 1028.82
-offset_bottom = 567.67
-text = "Action points Left:"
+offset_left = 890.768
+offset_top = 643.047
+offset_right = 1031.77
+offset_bottom = 669.047
+text = "Action points Left: 3"
 
 [node name="PlantPanel" type="Panel" parent="."]
 visible = false
-offset_left = 178.0
-offset_top = 339.0
-offset_right = 327.0
-offset_bottom = 425.0
+offset_left = 126.535
+offset_top = 402.628
+offset_right = 275.535
+offset_bottom = 545.628
 
 [node name="flower" type="Button" parent="PlantPanel"]
 layout_mode = 0
@@ -109,25 +109,65 @@ offset_right = 136.0
 offset_bottom = 70.0
 text = "bush"
 
+[node name="plant1" type="Button" parent="PlantPanel"]
+layout_mode = 0
+offset_left = 17.0507
+offset_top = 79.1405
+offset_right = 75.0507
+offset_bottom = 131.141
+text = "plant1"
+
 [node name="GuidePanel" type="Panel" parent="."]
+visible = false
+offset_top = -4.0
 offset_right = 1149.0
-offset_bottom = 647.0
+offset_bottom = 788.0
 
 [node name="TextEdit" type="TextEdit" parent="GuidePanel"]
 layout_mode = 0
-offset_left = 252.172
-offset_top = 134.539
-offset_right = 876.172
-offset_bottom = 514.539
+offset_left = 174.995
+offset_top = 173.163
+offset_right = 940.995
+offset_bottom = 535.163
 text = "At the beginning of the story: "
 
 [node name="Continue" type="Button" parent="GuidePanel"]
 layout_mode = 0
-offset_left = 517.0
-offset_top = 465.0
-offset_right = 592.0
-offset_bottom = 504.0
+offset_left = 507.933
+offset_top = 478.843
+offset_right = 586.933
+offset_bottom = 517.843
 text = "Continue"
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 38.5886
+offset_top = 96.9472
+offset_right = 289.589
+offset_bottom = 252.947
+
+[node name="CheckBox" type="CheckBox" parent="Panel"]
+layout_mode = 0
+offset_left = 9.87149
+offset_top = 13.8496
+offset_right = 241.871
+offset_bottom = 59.8496
+text = "Count: 6"
+
+[node name="CheckBox2" type="CheckBox" parent="Panel"]
+layout_mode = 0
+offset_left = 9.87149
+offset_top = 61.3339
+offset_right = 233.871
+offset_bottom = 92.3339
+text = "Best Temp: 20 - 30"
+
+[node name="CheckBox3" type="CheckBox" parent="Panel"]
+layout_mode = 0
+offset_left = 8.97409
+offset_top = 99.9149
+offset_right = 241.974
+offset_bottom = 123.915
+text = "Best Humid: 70 - 90"
 
 [connection signal="pressed" from="MistingSystemButton" to="." method="_on_misting_system_button_pressed"]
 [connection signal="pressed" from="OpenCurtainsButton" to="." method="_on_open_curtains_button_pressed"]
@@ -140,4 +180,8 @@ text = "Continue"
 [connection signal="ready" from="Action_pointsLabel" to="." method="_on_action_points_label_ready"]
 [connection signal="pressed" from="PlantPanel/flower" to="." method="_on_flower_pressed"]
 [connection signal="pressed" from="PlantPanel/bush" to="." method="_on_bush_pressed"]
+[connection signal="pressed" from="PlantPanel/plant1" to="." method="_on_plant_1_pressed"]
 [connection signal="pressed" from="GuidePanel/Continue" to="." method="_on_continue_pressed"]
+[connection signal="ready" from="Panel/CheckBox" to="." method="_on_check_box_ready"]
+[connection signal="ready" from="Panel/CheckBox2" to="." method="_on_check_box_2_ready"]
+[connection signal="ready" from="Panel/CheckBox3" to="." method="_on_check_box_3_ready"]

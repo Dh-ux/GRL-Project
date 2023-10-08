@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://4r1nvmqcxvga"]
 
 [ext_resource type="Texture2D" uid="uid://bt5kbty33wbof" path="res://resource/sprites/Plants/flower1.png" id="1_m61n5"]
-[ext_resource type="Script" path="res://resource/flower.gd" id="2_wd6d5"]
+[ext_resource type="Script" path="res://resource/Script/flower.gd" id="2_wd6d5"]
 
 [node name="flower" type="Sprite2D"]
-position = Vector2(291, 429)
-scale = Vector2(0.5, 0.472)
+position = Vector2(440, 684)
+scale = Vector2(1, 0.983)
 texture = ExtResource("1_m61n5")
 script = ExtResource("2_wd6d5")

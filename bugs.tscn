@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://doicsic8vqie2"]
 
 [ext_resource type="Texture2D" uid="uid://ddoq5ltqe4wyb" path="res://icon.svg" id="1_1mple"]
-[ext_resource type="Script" path="res://resource/bugs.gd" id="2_wxnl7"]
+[ext_resource type="Script" path="res://resource/Script/bugs.gd" id="2_wxnl7"]
 
 [node name="bugs" type="Sprite2D"]
 position = Vector2(533, 431)
-scale = Vector2(0.5, 0.472)
+scale = Vector2(0.3, 0.283)
 texture = ExtResource("1_1mple")
 script = ExtResource("2_wxnl7")

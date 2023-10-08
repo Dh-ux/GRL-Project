@@ -3,11 +3,12 @@ extends Node2D
 var life_list = []
 # Ecosystem attributes
 @export var temperature = 25
-@export var humidity = 50
+@export var humidity = 55
 var creature_count = 0
 var days=0
 signal day_end
 var action_points = 3
+var weather
 
 var initial_plant = false
 # UI elements
@@ -20,7 +21,8 @@ var initial_plant = false
 
 enum PlantType {
   FLOWER,
-  BUSH
+  BUSH,
+  PLANT
 }
 
 enum Weather {
@@ -58,13 +60,13 @@ func next_day():
 	$OpenCurtainsButton.disabled = false
 	$PlantButton.disabled = false
 	# Update attributes
-	var weather = Weather.values()[randi() % Weather.size()]
+	weather = Weather.values()[randi() % Weather.size()]
 	if weather == Weather.SUNNY:
 		temperature += 2
-		humidity -= 10
+		humidity -= 8
 		$Weather.texture = load("res://resource/sprites/Background/sunny.png")
 	elif weather == Weather.CLOUDY:
-		humidity -= 5	
+		humidity -= 4	
 		$Weather.texture = load("res://resource/sprites/Background/cloudy.jpg")
 	elif weather == Weather.RAINY:
 		temperature -= 2
@@ -97,7 +99,7 @@ func activateMistingSystem():
 func openCurtains():
 	# Increase sunlight and temperature
 	if checkActionPoints():
-		temperature += 5
+		temperature += 4
 		print("Curtain button pressed")
 		updateUI()
 
@@ -115,12 +117,16 @@ func addPlant(type):
 	var flower_scene
 	if type == PlantType.FLOWER:
 		flower_scene = load("res://flower.tscn")
-		humidity += 5
+		humidity -= 2
 		temperature -= 2
 	elif type == PlantType.BUSH:
 		flower_scene = load("res://bush.tscn")
-		humidity += 1
-		temperature -= 2
+		humidity -= 1
+		temperature -= 3
+	elif type == PlantType.PLANT:
+		humidity -= 3
+		temperature += 1
+		flower_scene = load("res://plant1.tscn")	
 	var flower_instance = flower_scene.instantiate()
 	if flower_instance != null:
 		print("Successfully instantiated flower_instance")
@@ -129,7 +135,7 @@ func addPlant(type):
 		var random_y
 		while true:
 			random_x = randf_range(480, 750)
-			random_y = randf_range(380, 400)
+			random_y = randf_range(550, 570)
 			var overlapping = false
 			# Check for overlap with existing plant positions
 			for existing_position in plant_positions:
@@ -166,7 +172,7 @@ func addBug():
 		print("Successfully instantiated bug_instance")
 		var plant_positions = []
 		var random_x= randf_range(480, 750)
-		var random_y= randf_range(300, 350)
+		var random_y= randf_range(450, 460)
 		var new_scale = randf_range(0.5,0.8)
 		random_x = clamp(random_x,450,900)
 #		while true:
@@ -204,6 +210,18 @@ func updateUI():
 	creatureCountLabel.text = "Creature Count: " + str(creature_count)
 	daysLabel.text="Days: " + str(days)
 	action_pointsLabel.text="Action points Left: " +str(action_points)
+	if temperature in range(20,30):
+		$Panel/CheckBox2.button_pressed = true
+	elif temperature >30 || temperature<20:
+		$Panel/CheckBox2.button_pressed = false 	
+	if humidity in range(70,90):
+		$Panel/CheckBox3.button_pressed = true
+	elif humidity >90 || humidity < 70:
+		$Panel/CheckBox3.button_pressed = false	
+	if creature_count > 6:
+		$Panel/CheckBox.button_pressed = true
+	elif creature_count < 6:
+		$Panel/CheckBox.button_pressed = false			
 		
 func checkActionPoints():
 	if action_points>0:
@@ -270,3 +288,19 @@ func _on_bush_pressed():
 
 func _on_continue_pressed():
 	$GuidePanel.visible = false
+
+
+func _on_plant_1_pressed():
+	placePlant(2)
+
+
+func _on_check_box_ready():
+	pass # Replace with function body.
+
+
+func _on_check_box_2_ready():
+	pass # Replace with function body.
+
+
+func _on_check_box_3_ready():
+	pass # Replace with function body.
