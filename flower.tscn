@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://resource/Script/flower.gd" id="2_wd6d5"]
 
 [node name="flower" type="Sprite2D"]
-position = Vector2(629, 723)
-scale = Vector2(0.598837, 0.589191)
+position = Vector2(440, 684)
+scale = Vector2(1, 0.983)
 texture = ExtResource("1_m61n5")
 script = ExtResource("2_wd6d5")

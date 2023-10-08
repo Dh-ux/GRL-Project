@@ -95,7 +95,7 @@ func addPlant():
 #		# Set the plant's position
 		flower_instance.set_global_position(Vector2(random_x, random_y))
 		flower_instance.growth = new_growth
-		flower_instance.scale_modifier = randf_range(0.2,0.5)
+		flower_instance.scale_modifier = randf_range(0.2,0.4)
 		get_parent().add_child(flower_instance)
 	else:
 		print("bugr_instance is null")

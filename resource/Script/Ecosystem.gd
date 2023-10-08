@@ -135,7 +135,7 @@ func addPlant(type):
 		var random_y
 		while true:
 			random_x = randf_range(480, 750)
-			random_y = randf_range(380, 400)
+			random_y = randf_range(550, 570)
 			var overlapping = false
 			# Check for overlap with existing plant positions
 			for existing_position in plant_positions:
@@ -172,7 +172,7 @@ func addBug():
 		print("Successfully instantiated bug_instance")
 		var plant_positions = []
 		var random_x= randf_range(480, 750)
-		var random_y= randf_range(300, 350)
+		var random_y= randf_range(450, 460)
 		var new_scale = randf_range(0.5,0.8)
 		random_x = clamp(random_x,450,900)
 #		while true:
