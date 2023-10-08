@@ -70,20 +70,19 @@ func next_day():
 		$Weather.texture = load("res://resource/sprites/Background/cloudy.jpg")
 	elif weather == Weather.RAINY:
 		temperature -= 2
-		$Weather.texture = load("res://resource/sprites/Background/rainy.png")	
-	if temperature <15 || temperature > 35:
-		game_over()	
-	if humidity < 45 || humidity > 95:
-		game_over()		
+		$Weather.texture = load("res://resource/sprites/Background/rainy.png")
+	action_points = 3	
+	updateUI()
+	await get_tree().create_timer(0.2).timeout
 	if days == 3:
 		if creature_count < 6:	
-			game_over()	
+			game_over()
+		else:
+			addBug()
 #	temperature = randf_range(temperature-2, temperature+2)		
 #	humidity = randf_range(humidity-10, humidity+10)
-	action_points = 3	
-	
-	
-	updateUI()
+
+
 
 func game_over():
 	get_tree().change_scene_to_file("res://gameover.tscn")
@@ -135,7 +134,7 @@ func addPlant(type):
 		var random_x
 		var random_y
 		while true:
-			random_x = randf_range(395, 550)
+			random_x = randf_range(480, 750)
 			random_y = randf_range(380, 400)
 			var overlapping = false
 			# Check for overlap with existing plant positions
@@ -153,7 +152,8 @@ func addPlant(type):
 #		# Set the plant's position
 		flower_instance.position = Vector2(random_x, random_y)
 		if initial_plant:
-			flower_instance.growth = randf_range(0.3,0.7)
+			flower_instance.growth = randf_range(0.5,0.7)
+
 		initial_plant = true
 		get_tree().get_root().add_child(flower_instance)
 
@@ -164,7 +164,40 @@ func addPlant(type):
 	# Load the Plant scene and instance it
 
 	# Add the plant instance as a child to the root node or another suitable node
-
+func addBug():
+	print("adding bugs")
+	var flower_scene = load("res://bugs.tscn")
+	var flower_instance = flower_scene.instantiate()
+	if flower_instance != null:
+		print("Successfully instantiated bug_instance")
+		var plant_positions = []
+		var random_x= randf_range(480, 750)
+		var random_y= randf_range(300, 350)
+		var new_scale = randf_range(0.5,0.8)
+		random_x = clamp(random_x,450,900)
+#		while true:
+#			random_x = randf_range(345, 600)
+#			random_y = randf_range(360, 380)
+#			var overlapping = false
+#			# Check for overlap with existing plant positions
+#			for existing_position in plant_positions:
+#				var distance = plant_positions.distance_to(existing_position)
+#				if distance < 2:
+#					overlapping = true
+#					break
+#			if not overlapping:
+#				plant_positions.append(Vector2(random_x, random_y))
+#				break
+#		# Generate random coordinates for the plant's position
+#		var random_x = randf_range(345, 600)  # Adjust the range as needed
+#		var random_y = randf_range(360, 380)  # Adjust the range as needed
+#		# Set the plant's position
+		flower_instance.position = Vector2(random_x, random_y)
+		flower_instance.growth = new_scale
+		flower_instance.scale_modifier = randf_range(0.7,1)
+		get_tree().get_root().add_child(flower_instance)
+	else:
+		print("bugr_instance is null")	
 
 func updateUI():
 	if action_points<=0:

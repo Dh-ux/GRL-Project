@@ -7,8 +7,8 @@ var temperature
 @export var base_growth_per_day = 0.5
 @export var humidity_target = 75
 @export var humidity_range = 15
-@export var temp_target = 75
-@export var temp_range = 15
+@export var temp_target = 27
+@export var temp_range = 6
 
 var type
 var growth = 1
@@ -20,6 +20,7 @@ func _ready():
 	eco_system = get_tree().get_root().get_node('Ecosystem')
 	eco_system.register(self)
 	eco_system.day_end.connect(on_next_day)
+	add_to_group("plants")
 	update_eco()
 	var temp = remap(growth,0.1,3,0.4,1)
 	scale = Vector2(temp,temp)*scale_modifier
@@ -35,23 +36,46 @@ func update_eco():
 func calculate_growth():
 	var temp_growth = 0.2
 	var humid_growth = 0.2
-	if temperature>=24 and temperature <=32:
-		temp_growth = temperature/28 * 0.5
-		#print("temperature is right!")
-		if humidity >= 60 and humidity <= 90:
-			humid_growth = humidity/75 * 0.5
-			#print("humidity is right!")
-	growth += (temp_growth + humid_growth) * base_growth_per_day
 	
+	var d = abs(temperature - temp_target) - temp_range
+	#if the temperature is in range
+	if d<=0:
+		temp_growth = 0.2 + abs(d/temp_range)
+	else:
+		#clamp(input; 与理想区间相差1倍时的最高惩罚; 当温度差==适宜温度时的保底生长)
+		#print("temp = "+str(-(abs(d/temp_range) -1)))
+		temp_growth = clamp(-(abs(d/temp_range) -1),-0.6,0)
+		if abs(d/temp_range) > 3:
+			humid_growth *= 0.1
 
+	var dh = abs(humidity - humidity_target) - humidity_range
+	#for humidity
+	if dh<=0:
+		humid_growth = 0.2 + abs(dh/humidity_range)
+	else:
+		#print("hum = "+str(-(abs(dh/humidity_range) -1)))
+		humid_growth = clamp(-(abs(dh/humidity_range) -1),-0.5,0)
+		if abs(dh/humidity_range) > 4:
+			temp_growth *= 0.1
+	if abs(d/temp_range) > 3:
+		humid_growth *= 0.1
+	print("temp = "+str(temp_growth))
+	print("hum = "+str(humid_growth))
+	growth += (temp_growth + humid_growth)/2 * base_growth_per_day
+#	print(growth)
+#	var tempa = remap(growth,0,2,0.1,1)
+#	scale = Vector2(tempa,tempa)*scale_modifier
+	if growth < 0.1:
+		queue_free()
+		
 func addPlant():
 	var flower_scene = load("res://flower.tscn")
 	var flower_instance = flower_scene.instantiate()
 	if flower_instance != null:
 		print("Successfully instantiated flower_instance")
 		var plant_positions = []
-		var random_x= get_position().x + randf_range(120, -120)
-		var random_y= get_position().y + randf_range(20, -20)
+		var random_x= get_global_position().x + randf_range(120, -120)
+		var random_y= get_global_position().y + randf_range(20, -20)
 		var new_growth = randf_range(0.3,0.6)
 		random_x = clamp(random_x,345,600)
 #		while true:
@@ -84,7 +108,6 @@ func on_next_day():
 	days+=1
 	calculate_growth()
 	#connect the finish day signal
-	await get_tree().create_timer(0.1).timeout
 	if growth>=1:
 		if growth >=2:
 			growth = 2
