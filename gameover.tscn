@@ -7,15 +7,15 @@
 script = ExtResource("1_6o7rn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(639, 324.5)
-scale = Vector2(4.26, 3.245)
+position = Vector2(639, 404)
+scale = Vector2(4.26, 4.04)
 texture = ExtResource("1_6g0n7")
 
 [node name="Button" type="Button" parent="."]
-offset_left = 501.0
-offset_top = 445.0
-offset_right = 697.0
-offset_bottom = 541.0
+offset_left = 526.0
+offset_top = 591.0
+offset_right = 722.0
+offset_bottom = 687.0
 theme_override_font_sizes/font_size = 32
 text = "Restart"
 

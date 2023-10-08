@@ -4,6 +4,12 @@ var eco_system
 var humidity
 var temperature
 
+@export var base_growth_per_day = 0.5
+@export var humidity_target = 75
+@export var humidity_range = 15
+@export var temp_target = 75
+@export var temp_range = 15
+
 var type
 var growth = 1
 var days =0
@@ -14,8 +20,9 @@ func _ready():
 	eco_system = get_tree().get_root().get_node('Ecosystem')
 	eco_system.register(self)
 	eco_system.day_end.connect(on_next_day)
-	add_to_group("animals")
 	update_eco()
+	var temp = remap(growth,0.1,3,0.4,1)
+	scale = Vector2(temp,temp)*scale_modifier
 
 func _process(delta):
 	pass
@@ -26,56 +33,27 @@ func update_eco():
 
 #here goes the main algorithm
 func calculate_growth():
-	var temp_growth = 0.5
-	var humid_growth = 0.5
+	var temp_growth = 0.2
+	var humid_growth = 0.2
 	if temperature>=24 and temperature <=32:
-		temp_growth = temperature/28
-	else:
-		temp_growth = -0.2
+		temp_growth = temperature/28 * 0.5
 		#print("temperature is right!")
-	if humidity >= 60 and humidity <= 90:
-		humid_growth = humidity/75
-	else:
-		temp_growth = -0.2
+		if humidity >= 60 and humidity <= 90:
+			humid_growth = humidity/75 * 0.5
 			#print("humidity is right!")
-			
-	#choose plant to eat, if the plant is larger than 1
-	var plant = get_tree().get_nodes_in_group("plants")
-	if plant.size() != 0:
-		var target_plant
-		for i in plant:
-			if i.growth >= 1:
-				target_plant = i
-				break
-		if target_plant:
-			print('eating plant ')
-			target_plant.growth = 0.3
-			var temp = remap(target_plant.growth,0.1,3,0,1)
-			target_plant.scale = Vector2(temp,temp)*scale_modifier
-			growth += 1 + temp_growth * humid_growth
-		else:
-			growth -= 0.5
-			if growth < 0:
-				queue_free()
-	else:
-		growth -= 0.5
-		if growth < 0:
-			queue_free()
-		#temporary balance solution
-		plant.pick_random().queue_free()
+	growth += (temp_growth + humid_growth) * base_growth_per_day
 	
 
 func addPlant():
-	var flower_scene = load("res://bugs.tscn")
+	var flower_scene = load("res://flower.tscn")
 	var flower_instance = flower_scene.instantiate()
 	if flower_instance != null:
-		#print("Successfully instantiated bug_instance")
+		print("Successfully instantiated flower_instance")
 		var plant_positions = []
-		var random_x= get_global_position().x + randf_range(-220, 220)
-		var random_y= get_global_position().y + randf_range(-50, 50)
-		var temp = remap(growth,0,2,0.1,1)
+		var random_x= get_position().x + randf_range(120, -120)
+		var random_y= get_position().y + randf_range(20, -20)
 		var new_growth = randf_range(0.3,0.6)
-		random_x = clamp(random_x,480, 750)
+		random_x = clamp(random_x,345,600)
 #		while true:
 #			random_x = randf_range(345, 600)
 #			random_y = randf_range(360, 380)
@@ -93,24 +71,25 @@ func addPlant():
 #		var random_x = randf_range(345, 600)  # Adjust the range as needed
 #		var random_y = randf_range(360, 380)  # Adjust the range as needed
 #		# Set the plant's position
-		flower_instance.set_global_position(Vector2(random_x, random_y))
+		flower_instance.position = Vector2(random_x, random_y)
 		flower_instance.growth = new_growth
-		flower_instance.scale_modifier = randf_range(0.2,0.5)
+		flower_instance.scale_modifier = randf_range(0.7,1)
 		get_parent().add_child(flower_instance)
 	else:
-		print("bugr_instance is null")
-
+		print("flower_instance is null")
 
 
 func on_next_day():
 	update_eco()
 	days+=1
 	calculate_growth()
+	#connect the finish day signal
 	await get_tree().create_timer(0.1).timeout
-	if growth>=1.5:
+	if growth>=1:
 		if growth >=2:
-			growth = 1
+			growth = 2
 		addPlant()
+		growth -= 0.5
 		var temp = remap(growth,0.5,3,0.5,1)
 		scale = Vector2(temp,temp)*scale_modifier
 	

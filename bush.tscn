@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://pstqir8gfrpe"]
 
+[ext_resource type="Script" path="res://resource/Script/bush.gd" id="1_08s1n"]
 [ext_resource type="Texture2D" uid="uid://g0pgngavf6sd" path="res://resource/sprites/Plants/bush.png" id="1_ac3mp"]
-[ext_resource type="Script" path="res://resource/bush.gd" id="2_utsk2"]
 
 [node name="bush" type="Sprite2D"]
 position = Vector2(497.5, 506.793)
-script = ExtResource("2_utsk2")
+script = ExtResource("1_08s1n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(17.375, -16.4892)
-scale = Vector2(0.0551, 0.0563248)
+position = Vector2(74.5, 229.207)
+scale = Vector2(0.028775, 0.0337686)
 texture = ExtResource("1_ac3mp")
