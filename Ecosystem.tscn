@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c54ljjqgpci6"]
+[gd_scene load_steps=6 format=3 uid="uid://c54ljjqgpci6"]
 
 [ext_resource type="Script" path="res://resource/Script/Ecosystem.gd" id="1_fni7g"]
 [ext_resource type="Texture2D" uid="uid://djfuaixlh20u5" path="res://resource/sprites/Background/Table.jpg" id="2_y87am"]
 [ext_resource type="Texture2D" uid="uid://cvm2r3ba0ppkg" path="res://resource/sprites/Background/Bottle.png" id="3_opgfq"]
 [ext_resource type="Texture2D" uid="uid://764onhxsr250" path="res://resource/sprites/Background/sunny.png" id="4_0qht8"]
+[ext_resource type="Texture2D" uid="uid://b2br6q1v6ysn6" path="res://resource/sprites/Background/diary.jpg" id="5_gkvho"]
 
 [node name="Ecosystem" type="Node2D"]
 scale = Vector2(1.11432, 1.01086)
@@ -169,6 +170,36 @@ offset_right = 241.974
 offset_bottom = 123.915
 text = "Best Humid: 70 - 90"
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(573.444, 400.649)
+scale = Vector2(4.44893, 4.1304)
+texture = ExtResource("5_gkvho")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -92.183
+offset_top = -58.2
+offset_right = -52.183
+offset_bottom = -35.2
+theme_override_font_sizes/font_size = 10
+text = "Ecosystem Diary"
+
+[node name="Day" type="Label" parent="Sprite2D"]
+offset_left = -91.5779
+offset_top = -34.4889
+offset_right = -43.5779
+offset_bottom = -8.4889
+theme_override_font_sizes/font_size = 8
+text = "Day: 0"
+
+[node name="Button" type="Button" parent="Sprite2D"]
+offset_left = 82.5008
+offset_top = 52.6914
+offset_right = 105.501
+offset_bottom = 69.6914
+theme_override_font_sizes/font_size = 6
+text = "end"
+
 [connection signal="pressed" from="MistingSystemButton" to="." method="_on_misting_system_button_pressed"]
 [connection signal="pressed" from="OpenCurtainsButton" to="." method="_on_open_curtains_button_pressed"]
 [connection signal="pressed" from="PlantButton" to="." method="_on_plant_button_pressed"]
@@ -185,3 +216,5 @@ text = "Best Humid: 70 - 90"
 [connection signal="ready" from="Panel/CheckBox" to="." method="_on_check_box_ready"]
 [connection signal="ready" from="Panel/CheckBox2" to="." method="_on_check_box_2_ready"]
 [connection signal="ready" from="Panel/CheckBox3" to="." method="_on_check_box_3_ready"]
+[connection signal="ready" from="Sprite2D/Day" to="." method="_on_day_ready"]
+[connection signal="pressed" from="Sprite2D/Button" to="." method="_on_button_pressed"]

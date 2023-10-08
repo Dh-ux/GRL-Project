@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://doicsic8vqie2"]
 
-[ext_resource type="Texture2D" uid="uid://ddoq5ltqe4wyb" path="res://icon.svg" id="1_1mple"]
+[ext_resource type="Texture2D" uid="uid://u6pubsiqlkkk" path="res://resource/sprites/Plants/butterfly.png" id="1_u6kfw"]
 [ext_resource type="Script" path="res://resource/Script/bugs.gd" id="2_wxnl7"]
 
 [node name="bugs" type="Sprite2D"]
-position = Vector2(533, 431)
-scale = Vector2(0.3, 0.283)
-texture = ExtResource("1_1mple")
+position = Vector2(519.5, 445.97)
+scale = Vector2(0.225, 0.199833)
+texture = ExtResource("1_u6kfw")
 script = ExtResource("2_wxnl7")

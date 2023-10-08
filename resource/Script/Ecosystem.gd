@@ -18,6 +18,7 @@ var initial_plant = false
 @onready var daysLabel = $DaysLabel
 @onready var next_day_button = $NextDayButton 
 @onready var action_pointsLabel = $Action_pointsLabel
+@onready var diary_day = $Sprite2D/Day
 
 enum PlantType {
   FLOWER,
@@ -55,6 +56,8 @@ func next_day():
 #	for i in life_list:
 #		i.on_next_day()
 	emit_signal('day_end')
+	updateUI()
+	$Sprite2D.visible = true
 	days+=1
 	$MistingSystemButton.disabled = false
 	$OpenCurtainsButton.disabled = false
@@ -74,11 +77,15 @@ func next_day():
 	action_points = 3	
 	updateUI()
 	await get_tree().create_timer(0.2).timeout
+	if temperature <15 || temperature > 35:
+		game_over()
+	if humidity >100 || humidity < 45:
+		game_over()
 	if days == 3:
 		if creature_count < 6:	
 			game_over()
 		else:
-			addBug()
+			addBug()	
 #	temperature = randf_range(temperature-2, temperature+2)		
 #	humidity = randf_range(humidity-10, humidity+10)
 
@@ -210,6 +217,7 @@ func updateUI():
 	creatureCountLabel.text = "Creature Count: " + str(creature_count)
 	daysLabel.text="Days: " + str(days)
 	action_pointsLabel.text="Action points Left: " +str(action_points)
+	diary_day.text = "Day: " + str(days)
 	if temperature in range(20,30):
 		$Panel/CheckBox2.button_pressed = true
 	elif temperature >30 || temperature<20:
@@ -304,3 +312,11 @@ func _on_check_box_2_ready():
 
 func _on_check_box_3_ready():
 	pass # Replace with function body.
+
+
+func _on_day_ready():
+	pass # Replace with function body.
+
+
+func _on_button_pressed():
+	$Sprite2D.visible = false;
