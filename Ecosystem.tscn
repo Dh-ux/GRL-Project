@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://c54ljjqgpci6"]
 
 [ext_resource type="Script" path="res://resource/Script/Ecosystem.gd" id="1_fni7g"]
-[ext_resource type="Texture2D" uid="uid://djfuaixlh20u5" path="res://resource/sprites/Background/Table.jpg" id="2_y87am"]
-[ext_resource type="Texture2D" uid="uid://cvm2r3ba0ppkg" path="res://resource/sprites/Background/Bottle.png" id="3_opgfq"]
-[ext_resource type="Texture2D" uid="uid://764onhxsr250" path="res://resource/sprites/Background/sunny.png" id="4_0qht8"]
+[ext_resource type="Texture2D" uid="uid://ctg01iym2i7sv" path="res://resource/Art/Background/sunny.png" id="2_v8ulh"]
+[ext_resource type="Texture2D" uid="uid://c3cn510gsivjr" path="res://resource/Art/Background/background.png" id="3_r3g6u"]
+[ext_resource type="Texture2D" uid="uid://cxs8cj7h2428w" path="res://resource/Art/Background/tank.png" id="4_jedip"]
 [ext_resource type="Texture2D" uid="uid://b2br6q1v6ysn6" path="res://resource/sprites/Background/diary.jpg" id="5_gkvho"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rel1o"]
@@ -22,20 +22,20 @@ corner_radius_bottom_left = 5
 scale = Vector2(1.11432, 1.01086)
 script = ExtResource("1_fni7g")
 
+[node name="Weather" type="Sprite2D" parent="."]
+position = Vector2(495.369, 381.853)
+scale = Vector2(0.444367, 0.44463)
+texture = ExtResource("2_v8ulh")
+
 [node name="Table" type="Sprite2D" parent="."]
-position = Vector2(573.5, 395.202)
-scale = Vector2(4.4363, 4.08457)
-texture = ExtResource("2_y87am")
+position = Vector2(570.752, 399.165)
+scale = Vector2(0.386484, 0.476461)
+texture = ExtResource("3_r3g6u")
 
 [node name="Bottle" type="Sprite2D" parent="."]
-position = Vector2(536.65, 473.077)
-scale = Vector2(1.27073, 1.04946)
-texture = ExtResource("3_opgfq")
-
-[node name="Weather" type="Sprite2D" parent="."]
-position = Vector2(988.284, 99.6698)
-scale = Vector2(0.401932, 0.411111)
-texture = ExtResource("4_0qht8")
+position = Vector2(566.713, 402.133)
+scale = Vector2(0.377809, 0.46474)
+texture = ExtResource("4_jedip")
 
 [node name="MistingSystemButton" type="Button" parent="."]
 offset_left = 44.8704
@@ -216,6 +216,7 @@ theme_override_font_sizes/font_size = 6
 text = "end"
 
 [node name="Panel2" type="Panel" parent="."]
+visible = false
 offset_left = 431.0
 offset_top = 133.0
 offset_right = 643.0

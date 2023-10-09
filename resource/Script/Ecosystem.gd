@@ -67,13 +67,13 @@ func next_day():
 	if weather == Weather.SUNNY:
 		temperature += 2
 		humidity -= 8
-		$Weather.texture = load("res://resource/sprites/Background/sunny.png")
+		$Weather.texture = load("res://resource/Art/Background/sunny.png")
 	elif weather == Weather.CLOUDY:
 		humidity -= 4	
-		$Weather.texture = load("res://resource/sprites/Background/cloudy.jpg")
+		$Weather.texture = load("res://resource/Art/Background/cloudy.png")
 	elif weather == Weather.RAINY:
 		temperature -= 2
-		$Weather.texture = load("res://resource/sprites/Background/rainy.png")
+		$Weather.texture = load("res://resource/Art/Background/rainy.png")
 	action_points = 3	
 	updateUI()
 	await get_tree().create_timer(0.2).timeout
