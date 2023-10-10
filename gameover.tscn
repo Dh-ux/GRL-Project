@@ -11,14 +11,6 @@ position = Vector2(647, 394)
 scale = Vector2(0.771176, 1.13052)
 texture = ExtResource("2_5s3fh")
 
-[node name="Label" type="Label" parent="Sprite2D"]
-offset_left = -252.86
-offset_top = -183.985
-offset_right = 181.14
-offset_bottom = -70.9854
-theme_override_font_sizes/font_size = 80
-text = "Game Over"
-
 [node name="Button" type="Button" parent="."]
 offset_left = 526.0
 offset_top = 591.0
@@ -26,5 +18,13 @@ offset_right = 722.0
 offset_bottom = 687.0
 theme_override_font_sizes/font_size = 32
 text = "Restart"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 380.0
+offset_top = 220.0
+offset_right = 1059.0
+offset_bottom = 536.0
+theme_override_font_sizes/font_size = 90
+text = "Game Over"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

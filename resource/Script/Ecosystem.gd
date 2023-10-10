@@ -57,7 +57,7 @@ func next_day():
 #		i.on_next_day()
 	emit_signal('day_end')
 	updateUI()
-	$Sprite2D.visible = true
+#	$Sprite2D.visible = true
 	days+=1
 	$MistingSystemButton.disabled = false
 	$OpenCurtainsButton.disabled = false
@@ -215,8 +215,8 @@ func updateUI():
 	temperatureLabel.text = "Temperature: " + str(temperature)
 	humidityProgressBar.value = humidity
 	creatureCountLabel.text = "Creature Count: " + str(creature_count)
-	daysLabel.text="Days: " + str(days)
-	action_pointsLabel.text="Action points Left: " +str(action_points)
+	daysLabel.text= str(days)
+	action_pointsLabel.text= str(action_points)
 	diary_day.text = "Day: " + str(days)
 	if temperature in range(20,30):
 		$Panel/CheckBox2.button_pressed = true
