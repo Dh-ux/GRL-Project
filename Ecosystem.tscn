@@ -237,10 +237,10 @@ offset_bottom = 517.843
 text = "Continue"
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 89.7408
-offset_top = 126.625
-offset_right = 340.741
-offset_bottom = 282.625
+offset_left = 90.0
+offset_top = 127.0
+offset_right = 337.0
+offset_bottom = 284.0
 
 [node name="CheckBox" type="CheckBox" parent="Panel"]
 layout_mode = 0
