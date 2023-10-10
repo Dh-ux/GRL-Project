@@ -1,12 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://c54ljjqgpci6"]
+[gd_scene load_steps=23 format=3 uid="uid://c54ljjqgpci6"]
 
 [ext_resource type="Script" path="res://resource/Script/Ecosystem.gd" id="1_fni7g"]
-[ext_resource type="Texture2D" uid="uid://ctg01iym2i7sv" path="res://resource/Art/Background/sunny.png" id="2_v8ulh"]
+[ext_resource type="Texture2D" uid="uid://cmgs2wfxqwn6j" path="res://resource/Art/Background/sunny with birds.PNG" id="2_b6p65"]
 [ext_resource type="Texture2D" uid="uid://c3cn510gsivjr" path="res://resource/Art/Background/background.png" id="3_r3g6u"]
 [ext_resource type="Texture2D" uid="uid://cxs8cj7h2428w" path="res://resource/Art/Background/tank.png" id="4_jedip"]
 [ext_resource type="Script" path="res://MistingSystemButton.gd" id="5_arwd1"]
 [ext_resource type="Texture2D" uid="uid://bbs377ceqvg4w" path="res://resource/Art/UI/misting.png" id="5_dec5c"]
 [ext_resource type="Texture2D" uid="uid://b2br6q1v6ysn6" path="res://resource/sprites/Background/diary.jpg" id="5_gkvho"]
+[ext_resource type="Texture2D" uid="uid://rt7836qhpmy6" path="res://resource/Art/creature/soil.PNG" id="5_pqucr"]
 [ext_resource type="Texture2D" uid="uid://dqo0jlu77g7mj" path="res://resource/Art/UI/plantbox.png" id="5_w3dfj"]
 [ext_resource type="Texture2D" uid="uid://db4f3ecl6equk" path="res://resource/Art/UI/curtain.png" id="6_7vwkj"]
 [ext_resource type="Script" path="res://resource/HighLight.gd" id="7_65fyg"]
@@ -38,9 +39,9 @@ scale = Vector2(1.11432, 1.01086)
 script = ExtResource("1_fni7g")
 
 [node name="Weather" type="Sprite2D" parent="."]
-position = Vector2(572.546, 397.681)
+position = Vector2(819.334, 307.659)
 scale = Vector2(0.382894, 0.472358)
-texture = ExtResource("2_v8ulh")
+texture = ExtResource("2_b6p65")
 
 [node name="Table" type="Sprite2D" parent="."]
 position = Vector2(574.341, 396.445)
@@ -51,6 +52,49 @@ texture = ExtResource("3_r3g6u")
 position = Vector2(566.713, 402.133)
 scale = Vector2(0.377809, 0.46474)
 texture = ExtResource("4_jedip")
+
+[node name="soil" type="Sprite2D" parent="."]
+position = Vector2(544.727, 687.533)
+scale = Vector2(0.361277, 0.519786)
+texture = ExtResource("5_pqucr")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 90.0
+offset_top = 127.0
+offset_right = 337.0
+offset_bottom = 284.0
+
+[node name="CheckBox" type="CheckBox" parent="Panel"]
+layout_mode = 0
+offset_left = 9.87149
+offset_top = 13.8496
+offset_right = 241.871
+offset_bottom = 59.8496
+button_mask = 0
+text = "Count: 6"
+
+[node name="CheckBox2" type="CheckBox" parent="Panel"]
+layout_mode = 0
+offset_left = 9.87149
+offset_top = 61.3339
+offset_right = 233.871
+offset_bottom = 92.3339
+button_mask = 0
+text = "Best Temp: 20 - 30"
+
+[node name="CheckBox3" type="CheckBox" parent="Panel"]
+layout_mode = 0
+offset_left = 8.97409
+offset_top = 99.9149
+offset_right = 241.974
+offset_bottom = 123.915
+button_mask = 0
+text = "Best Humid: 70 - 90"
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(78.0745, -35.6133)
+scale = Vector2(0.349623, 0.386648)
+texture = ExtResource("15_xkqt4")
 
 [node name="MistingSystemButton" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -126,18 +170,18 @@ scale = Vector2(0.144049, 0.182705)
 texture = ExtResource("5_w3dfj")
 
 [node name="Sprite2D2" type="Sprite2D" parent="BugButton"]
-position = Vector2(29.7185, 12.8477)
+position = Vector2(29.6812, 10.6758)
 scale = Vector2(0.180944, 0.22289)
 texture = ExtResource("7_s1ot5")
 
 [node name="FrogButton" type="Button" parent="."]
-offset_left = 869.589
-offset_top = 470.886
-offset_right = 947.589
-offset_bottom = 524.886
+offset_left = 871.383
+offset_top = 458.026
+offset_right = 949.383
+offset_bottom = 512.026
 
 [node name="Sprite2D" type="Sprite2D" parent="FrogButton"]
-position = Vector2(44.8704, 19.7852)
+position = Vector2(42.1782, 18.7959)
 scale = Vector2(0.372374, 0.43417)
 texture = ExtResource("8_0d2kn")
 
@@ -237,10 +281,10 @@ texture = ExtResource("14_m42ou")
 
 [node name="PlantPanel" type="Panel" parent="."]
 visible = false
-offset_left = 812.154
-offset_top = 498.585
-offset_right = 961.154
-offset_bottom = 641.585
+offset_left = 812.0
+offset_top = 499.0
+offset_right = 1002.0
+offset_bottom = 642.0
 
 [node name="flower" type="Button" parent="PlantPanel"]
 layout_mode = 0
@@ -248,15 +292,15 @@ offset_left = 16.0
 offset_top = 11.0
 offset_right = 71.0
 offset_bottom = 69.0
-text = "flower"
+text = "Ferns"
 
 [node name="bush" type="Button" parent="PlantPanel"]
 layout_mode = 0
-offset_left = 81.0
-offset_top = 12.0
-offset_right = 136.0
-offset_bottom = 70.0
-text = "bush"
+offset_left = 81.8186
+offset_top = 10.4672
+offset_right = 184.819
+offset_bottom = 68.4672
+text = "Melasromes"
 
 [node name="plant1" type="Button" parent="PlantPanel"]
 layout_mode = 0
@@ -264,7 +308,7 @@ offset_left = 17.0507
 offset_top = 79.1405
 offset_right = 75.0507
 offset_bottom = 131.141
-text = "plant1"
+text = "Lobster claws"
 
 [node name="GuidePanel" type="Panel" parent="."]
 visible = false
@@ -287,44 +331,6 @@ offset_top = 478.843
 offset_right = 586.933
 offset_bottom = 517.843
 text = "Continue"
-
-[node name="Panel" type="Panel" parent="."]
-offset_left = 90.0
-offset_top = 127.0
-offset_right = 337.0
-offset_bottom = 284.0
-
-[node name="CheckBox" type="CheckBox" parent="Panel"]
-layout_mode = 0
-offset_left = 9.87149
-offset_top = 13.8496
-offset_right = 241.871
-offset_bottom = 59.8496
-button_mask = 0
-text = "Count: 6"
-
-[node name="CheckBox2" type="CheckBox" parent="Panel"]
-layout_mode = 0
-offset_left = 9.87149
-offset_top = 61.3339
-offset_right = 233.871
-offset_bottom = 92.3339
-button_mask = 0
-text = "Best Temp: 20 - 30"
-
-[node name="CheckBox3" type="CheckBox" parent="Panel"]
-layout_mode = 0
-offset_left = 8.97409
-offset_top = 99.9149
-offset_right = 241.974
-offset_bottom = 123.915
-button_mask = 0
-text = "Best Humid: 70 - 90"
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel"]
-position = Vector2(78.0745, -35.6133)
-scale = Vector2(0.349623, 0.386648)
-texture = ExtResource("15_xkqt4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -364,6 +370,9 @@ offset_right = 643.0
 offset_bottom = 242.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rel1o")
 
+[connection signal="ready" from="Panel/CheckBox" to="." method="_on_check_box_ready"]
+[connection signal="ready" from="Panel/CheckBox2" to="." method="_on_check_box_2_ready"]
+[connection signal="ready" from="Panel/CheckBox3" to="." method="_on_check_box_3_ready"]
 [connection signal="mouse_entered" from="MistingSystemButton" to="MistingSystemButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MistingSystemButton" to="MistingSystemButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="MistingSystemButton" to="." method="_on_misting_system_button_pressed"]
@@ -378,6 +387,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rel1o")
 [connection signal="pressed" from="PlantButton" to="PlantButton" method="_on_pressed"]
 [connection signal="mouse_entered" from="BugButton" to="BugButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BugButton" to="BugButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="BugButton" to="." method="_on_bug_button_pressed"]
 [connection signal="pressed" from="BugButton" to="BugButton" method="_on_pressed"]
 [connection signal="ready" from="TemperatureLabel" to="." method="_on_temperature_label_ready"]
 [connection signal="ready" from="DaysLabel" to="." method="_on_days_label_ready"]
@@ -393,8 +403,5 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rel1o")
 [connection signal="pressed" from="PlantPanel/bush" to="." method="_on_bush_pressed"]
 [connection signal="pressed" from="PlantPanel/plant1" to="." method="_on_plant_1_pressed"]
 [connection signal="pressed" from="GuidePanel/Continue" to="." method="_on_continue_pressed"]
-[connection signal="ready" from="Panel/CheckBox" to="." method="_on_check_box_ready"]
-[connection signal="ready" from="Panel/CheckBox2" to="." method="_on_check_box_2_ready"]
-[connection signal="ready" from="Panel/CheckBox3" to="." method="_on_check_box_3_ready"]
 [connection signal="ready" from="Sprite2D/Day" to="." method="_on_day_ready"]
 [connection signal="pressed" from="Sprite2D/Button" to="." method="_on_button_pressed"]

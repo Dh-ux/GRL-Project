@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://doicsic8vqie2"]
 
-[ext_resource type="Texture2D" uid="uid://u6pubsiqlkkk" path="res://resource/sprites/Plants/butterfly.png" id="1_u6kfw"]
+[ext_resource type="Texture2D" uid="uid://ldiyv05plv13" path="res://resource/Art/creature/leafcutter ants 0.PNG" id="1_px26m"]
 [ext_resource type="Script" path="res://resource/Script/bugs.gd" id="2_wxnl7"]
 
 [node name="bugs" type="Sprite2D"]
-position = Vector2(519.5, 445.97)
-scale = Vector2(0.225, 0.199833)
-texture = ExtResource("1_u6kfw")
+position = Vector2(623, 738)
+scale = Vector2(0.547407, 0.472101)
+texture = ExtResource("1_px26m")
 script = ExtResource("2_wxnl7")

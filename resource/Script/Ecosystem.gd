@@ -67,7 +67,7 @@ func next_day():
 	if weather == Weather.SUNNY:
 		temperature += 2
 		humidity -= 8
-		$Weather.texture = load("res://resource/Art/Background/sunny.png")
+		$Weather.texture = load("res://resource/Art/Background/sunny with birds.PNG")
 	elif weather == Weather.CLOUDY:
 		humidity -= 4	
 		$Weather.texture = load("res://resource/Art/Background/cloudy.png")
@@ -180,7 +180,7 @@ func addBug():
 		print("Successfully instantiated bug_instance")
 		var plant_positions = []
 		var random_x= randf_range(480, 750)
-		var random_y= randf_range(450, 460)
+		var random_y= randf_range(600, 630)
 		var new_scale = randf_range(0.5,0.8)
 		random_x = clamp(random_x,450,900)
 #		while true:
@@ -322,3 +322,7 @@ func _on_day_ready():
 
 func _on_button_pressed():
 	$Sprite2D.visible = false;
+
+
+func _on_bug_button_pressed():
+	addBug()

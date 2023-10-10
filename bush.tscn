@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://pstqir8gfrpe"]
 
 [ext_resource type="Script" path="res://resource/Script/bush.gd" id="1_08s1n"]
-[ext_resource type="Texture2D" uid="uid://g0pgngavf6sd" path="res://resource/sprites/Plants/bush.png" id="1_ac3mp"]
+[ext_resource type="Texture2D" uid="uid://b5fw8a8llohbb" path="res://resource/Art/creature/melasromes 3.PNG" id="2_hlei0"]
 
 [node name="bush" type="Sprite2D"]
 position = Vector2(499, 692)
 script = ExtResource("1_08s1n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.05, 0.059)
-texture = ExtResource("1_ac3mp")
+position = Vector2(-42, 110)
+scale = Vector2(0.352711, 0.398327)
+texture = ExtResource("2_hlei0")
