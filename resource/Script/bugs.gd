@@ -54,7 +54,7 @@ func calculate_growth():
 				break
 		if target_plant:
 			print('eating plant ')
-			target_plant.growth = 0.3
+			target_plant.growth -= 2
 			var temp = remap(target_plant.growth,0.1,3,0,1)
 			target_plant.scale = Vector2(temp,temp)*scale_modifier
 			growth += 1 + temp_growth * humid_growth

@@ -119,6 +119,8 @@ func on_next_day():
 		growth -= 0.5
 		var temp = remap(growth,0.5,3,0.5,1)
 		scale = Vector2(temp,temp)*scale_modifier
+	if growth < 0.1:
+		queue_free()
 	
 #	# Update attributes
 #	temperature = randf_range(temperature-2, temperature+2)		

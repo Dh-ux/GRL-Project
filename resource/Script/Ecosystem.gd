@@ -19,7 +19,10 @@ var initial_plant = false
 @onready var next_day_button = $NextDayButton 
 @onready var action_pointsLabel = $Action_pointsLabel
 @onready var diary_day = $Sprite2D/Day
-
+@onready var bug_node = $Bug
+@onready var flower_node = $flower
+@onready var bush_node = $bush
+@onready var plant1_node =$plant1
 enum PlantType {
   FLOWER,
   BUSH,
@@ -62,6 +65,10 @@ func next_day():
 	$MistingSystemButton.disabled = false
 	$OpenCurtainsButton.disabled = false
 	$PlantButton.disabled = false
+	if creature_count>=7:
+		creature_count-=1
+	elif creature_count>=12:
+		creature_count-=2	
 	# Update attributes
 	weather = Weather.values()[randi() % Weather.size()]
 	if weather == Weather.SUNNY:
@@ -123,19 +130,25 @@ func placePlant(type):
 
 func addPlant(type):
 	var flower_scene
+	var flower_instance
 	if type == PlantType.FLOWER:
 		flower_scene = load("res://flower.tscn")
 		humidity -= 2
 		temperature -= 2
+		flower_instance = flower_scene.instantiate()
+		flower_node.add_child(flower_instance)
 	elif type == PlantType.BUSH:
 		flower_scene = load("res://bush.tscn")
 		humidity -= 1
 		temperature -= 3
+		flower_instance = flower_scene.instantiate()
+		bush_node.add_child(flower_instance)
 	elif type == PlantType.PLANT:
 		humidity -= 3
 		temperature += 1
-		flower_scene = load("res://plant1.tscn")	
-	var flower_instance = flower_scene.instantiate()
+		flower_scene = load("res://plant1.tscn")
+		flower_instance = flower_scene.instantiate()
+		plant1_node.add_child(flower_instance)			
 	if flower_instance != null:
 		print("Successfully instantiated flower_instance")
 		var plant_positions = []
@@ -176,6 +189,7 @@ func addBug():
 	print("adding bugs")
 	var flower_scene = load("res://bugs.tscn")
 	var flower_instance = flower_scene.instantiate()
+	bug_node.add_child(flower_instance)
 	if flower_instance != null:
 		print("Successfully instantiated bug_instance")
 		var plant_positions = []
@@ -212,8 +226,13 @@ func updateUI():
 		$MistingSystemButton.disabled = true
 		$OpenCurtainsButton.disabled = true
 		$PlantButton.disabled = true
+		$BugButton.disabled = true
 		$PlantPanel.hide()
 		next_day_button.nextday_hint()
+	if days<2:
+		$BugButton.disabled = true
+	if days>2:
+		$BugButton.disabled = false	
 	temperatureLabel.text = "Temperature: " + str(temperature)
 	humidityProgressBar.value = humidity
 	creatureCountLabel.text = "Creature Count: " + str(creature_count)
