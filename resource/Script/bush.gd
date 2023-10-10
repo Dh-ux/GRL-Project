@@ -22,8 +22,11 @@ func _ready():
 	eco_system.day_end.connect(on_next_day)
 	add_to_group("plants")
 	update_eco()
-	var temp = remap(growth,0,2,0.1,1)
-	scale = Vector2(temp,temp)*scale_modifier
+	var temp = remap(growth,0.1,3,0.4,1)
+	scale = Vector2.ZERO
+	#scale = Vector2(temp,temp)*scale_modifier
+	var tween = get_tree().create_tween().set_trans(Tween.TRANS_BACK).set_ease(1)
+	tween.tween_property(self, "scale", Vector2(temp,temp)*scale_modifier, 0.1)
 
 func _process(delta):
 	pass

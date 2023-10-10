@@ -77,15 +77,16 @@ func next_day():
 	action_points = 3	
 	updateUI()
 	await get_tree().create_timer(0.2).timeout
-	if temperature <15 || temperature > 35:
+	if temperature <14 || temperature > 48:
 		game_over()
-	if humidity >100 || humidity < 45:
+	if humidity >100 || humidity < 10:
 		game_over()
 	if days == 3:
 		if creature_count < 6:	
 			game_over()
 		else:
 			addBug()	
+	next_day_button.nextday_end()
 #	temperature = randf_range(temperature-2, temperature+2)		
 #	humidity = randf_range(humidity-10, humidity+10)
 
@@ -212,6 +213,7 @@ func updateUI():
 		$OpenCurtainsButton.disabled = true
 		$PlantButton.disabled = true
 		$PlantPanel.hide()
+		next_day_button.nextday_hint()
 	temperatureLabel.text = "Temperature: " + str(temperature)
 	humidityProgressBar.value = humidity
 	creatureCountLabel.text = "Creature Count: " + str(creature_count)

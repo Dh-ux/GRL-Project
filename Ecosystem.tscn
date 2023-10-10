@@ -1,13 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://c54ljjqgpci6"]
+[gd_scene load_steps=22 format=3 uid="uid://c54ljjqgpci6"]
 
 [ext_resource type="Script" path="res://resource/Script/Ecosystem.gd" id="1_fni7g"]
 [ext_resource type="Texture2D" uid="uid://ctg01iym2i7sv" path="res://resource/Art/Background/sunny.png" id="2_v8ulh"]
 [ext_resource type="Texture2D" uid="uid://c3cn510gsivjr" path="res://resource/Art/Background/background.png" id="3_r3g6u"]
 [ext_resource type="Texture2D" uid="uid://cxs8cj7h2428w" path="res://resource/Art/Background/tank.png" id="4_jedip"]
+[ext_resource type="Script" path="res://MistingSystemButton.gd" id="5_arwd1"]
 [ext_resource type="Texture2D" uid="uid://bbs377ceqvg4w" path="res://resource/Art/UI/misting.png" id="5_dec5c"]
 [ext_resource type="Texture2D" uid="uid://b2br6q1v6ysn6" path="res://resource/sprites/Background/diary.jpg" id="5_gkvho"]
 [ext_resource type="Texture2D" uid="uid://dqo0jlu77g7mj" path="res://resource/Art/UI/plantbox.png" id="5_w3dfj"]
 [ext_resource type="Texture2D" uid="uid://db4f3ecl6equk" path="res://resource/Art/UI/curtain.png" id="6_7vwkj"]
+[ext_resource type="Script" path="res://resource/HighLight.gd" id="7_65fyg"]
 [ext_resource type="Texture2D" uid="uid://dcokxb005c73t" path="res://resource/Art/UI/bugbox.png" id="7_s1ot5"]
 [ext_resource type="Texture2D" uid="uid://mo4glt3t4xnm" path="res://resource/Art/UI/frogbox.png" id="8_0d2kn"]
 [ext_resource type="Texture2D" uid="uid://dp15r1fj81pxl" path="res://resource/Art/UI/temperature1.png" id="9_xxx4e"]
@@ -17,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dp0cw5nurh7ml" path="res://resource/Art/date/nextday.png" id="13_2f2w0"]
 [ext_resource type="Texture2D" uid="uid://64ssdo6ghwqp" path="res://resource/Art/UI/actionpoint.png" id="14_m42ou"]
 [ext_resource type="Texture2D" uid="uid://e5fe2rnlw052" path="res://resource/Art/UI/todo.png" id="15_xkqt4"]
+[ext_resource type="Script" path="res://NextDayButton.gd" id="16_bcj8g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rel1o"]
 bg_color = Color(0.980392, 0.980392, 0.980392, 1)
@@ -50,50 +53,81 @@ scale = Vector2(0.377809, 0.46474)
 texture = ExtResource("4_jedip")
 
 [node name="MistingSystemButton" type="Button" parent="."]
-offset_left = 1027.53
-offset_top = 498.585
-offset_right = 1096.53
-offset_bottom = 542.585
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 1018.56
+offset_top = 470.886
+offset_right = 1087.56
+offset_bottom = 514.886
+scale = Vector2(1.30301, 1.8863)
 text = "Misting"
+script = ExtResource("5_arwd1")
 
-[node name="Sprite2D" type="Sprite2D" parent="MistingSystemButton"]
-position = Vector2(37.6913, 10.8818)
-scale = Vector2(0.378723, 0.385839)
+[node name="Sprite2D2" type="Sprite2D" parent="MistingSystemButton"]
+position = Vector2(35.8116, 20.453)
+scale = Vector2(0.290652, 0.204548)
 texture = ExtResource("5_dec5c")
 
 [node name="OpenCurtainsButton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 offset_left = 457.678
 offset_top = -0.989254
 offset_right = 1117.68
 offset_bottom = 101.011
+scale = Vector2(1, 3.73035)
 text = "Curtain"
+script = ExtResource("7_65fyg")
+
+[node name="hint" type="Sprite2D" parent="OpenCurtainsButton"]
+visible = false
+modulate = Color(5, 4.73, 5, 1)
+self_modulate = Color(0.764706, 0.2, 0.129412, 1)
+position = Vector2(343.707, 14.5855)
+scale = Vector2(0.434162, 0.0884284)
+texture = ExtResource("6_7vwkj")
 
 [node name="Sprite2D" type="Sprite2D" parent="OpenCurtainsButton"]
-position = Vector2(343.707, 54.4091)
-scale = Vector2(0.422777, 0.28563)
+position = Vector2(343.707, 14.5855)
+scale = Vector2(0.422777, 0.0765692)
 texture = ExtResource("6_7vwkj")
 
 [node name="PlantButton" type="Button" parent="."]
-offset_left = 823.821
-offset_top = 640.049
-offset_right = 948.821
-offset_bottom = 709.049
+offset_left = 819.334
+offset_top = 612.35
+offset_right = 1004.33
+offset_bottom = 711.35
 text = "Plant"
+script = ExtResource("7_65fyg")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlantButton"]
-position = Vector2(87.0486, 11.9863)
+[node name="hint" type="Sprite2D" parent="PlantButton"]
+visible = false
+self_modulate = Color(5, 6, 3, 1)
+position = Vector2(91.5357, 39.6854)
+scale = Vector2(0.427277, 0.515821)
+texture = ExtResource("5_w3dfj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PlantButton"]
+position = Vector2(91.5357, 39.6854)
 scale = Vector2(0.406581, 0.477162)
 texture = ExtResource("5_w3dfj")
 
 [node name="BugButton" type="Button" parent="."]
-offset_left = 883.05
-offset_top = 548.048
-offset_right = 940.05
-offset_bottom = 581.048
+offset_left = 845.359
+offset_top = 530.242
+offset_right = 902.359
+offset_bottom = 563.242
+scale = Vector2(2.23737, 2.03857)
+script = ExtResource("7_65fyg")
 
-[node name="Sprite2D" type="Sprite2D" parent="BugButton"]
-position = Vector2(28.7996, 8.3847)
-scale = Vector2(0.404837, 0.454378)
+[node name="hint" type="Sprite2D" parent="BugButton"]
+visible = false
+self_modulate = Color(3.56, 5, 2.96, 1)
+position = Vector2(29.6814, 11.6463)
+scale = Vector2(0.144049, 0.182705)
+texture = ExtResource("5_w3dfj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BugButton"]
+position = Vector2(29.7185, 12.8477)
+scale = Vector2(0.180944, 0.22289)
 texture = ExtResource("7_s1ot5")
 
 [node name="FrogButton" type="Button" parent="."]
@@ -159,16 +193,34 @@ scale = Vector2(0.411904, 0.453758)
 texture = ExtResource("12_p0vol")
 
 [node name="NextDayButton" type="Button" parent="."]
-offset_left = 1026.64
-offset_top = 625.21
-offset_right = 1110.64
-offset_bottom = 673.21
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1015.87
+offset_top = 613.339
+offset_right = 1108.87
+offset_bottom = 679.339
+grow_horizontal = 2
+grow_vertical = 2
 text = "Next"
+script = ExtResource("16_bcj8g")
 
 [node name="Sprite2D" type="Sprite2D" parent="NextDayButton"]
-position = Vector2(46.6653, 17.8066)
+z_index = 2
+position = Vector2(47.3053, 32.0166)
 scale = Vector2(0.268844, 0.351125)
 texture = ExtResource("13_2f2w0")
+
+[node name="hint" type="Sprite2D" parent="NextDayButton/Sprite2D"]
+self_modulate = Color(5, 6, 3, 1)
+z_index = -1
+scale = Vector2(1.08074, 1.06412)
+texture = ExtResource("13_2f2w0")
+
+[node name="Timer" type="Timer" parent="NextDayButton"]
 
 [node name="Action_pointsLabel" type="Label" parent="."]
 offset_left = 221.66
@@ -312,14 +364,30 @@ offset_right = 643.0
 offset_bottom = 242.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rel1o")
 
+[connection signal="mouse_entered" from="MistingSystemButton" to="MistingSystemButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MistingSystemButton" to="MistingSystemButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="MistingSystemButton" to="." method="_on_misting_system_button_pressed"]
+[connection signal="pressed" from="MistingSystemButton" to="MistingSystemButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="OpenCurtainsButton" to="OpenCurtainsButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="OpenCurtainsButton" to="OpenCurtainsButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="OpenCurtainsButton" to="." method="_on_open_curtains_button_pressed"]
+[connection signal="pressed" from="OpenCurtainsButton" to="OpenCurtainsButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="PlantButton" to="PlantButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PlantButton" to="PlantButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="PlantButton" to="." method="_on_plant_button_pressed"]
+[connection signal="pressed" from="PlantButton" to="PlantButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="BugButton" to="BugButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BugButton" to="BugButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="BugButton" to="BugButton" method="_on_pressed"]
 [connection signal="ready" from="TemperatureLabel" to="." method="_on_temperature_label_ready"]
 [connection signal="ready" from="DaysLabel" to="." method="_on_days_label_ready"]
 [connection signal="ready" from="CreatureCountLabel" to="." method="_on_creature_count_label_ready"]
 [connection signal="ready" from="HumidityProgressBar" to="." method="_on_humidity_progress_bar_ready"]
+[connection signal="mouse_entered" from="NextDayButton" to="NextDayButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NextDayButton" to="NextDayButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="NextDayButton" to="." method="_on_next_day_button_pressed"]
+[connection signal="pressed" from="NextDayButton" to="NextDayButton" method="_on_pressed"]
+[connection signal="timeout" from="NextDayButton/Timer" to="NextDayButton" method="_on_timer_timeout"]
 [connection signal="ready" from="Action_pointsLabel" to="." method="_on_action_points_label_ready"]
 [connection signal="pressed" from="PlantPanel/flower" to="." method="_on_flower_pressed"]
 [connection signal="pressed" from="PlantPanel/bush" to="." method="_on_bush_pressed"]
