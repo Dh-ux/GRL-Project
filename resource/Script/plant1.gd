@@ -53,7 +53,7 @@ func addPlant():
 	if flower_instance != null:
 		print("Successfully instantiated flower_instance")
 		var plant_positions = []
-		var random_x= get_position().x + randf_range(120, -120)
+		var random_x= get_position().x + randf_range(80, -80)
 		var random_y= get_position().y + randf_range(20, -20)
 		var new_growth = randf_range(0.3,0.6)
 		random_x = clamp(random_x,345,600)

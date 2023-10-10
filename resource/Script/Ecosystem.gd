@@ -127,6 +127,13 @@ func placePlant(type):
 		print("Plant button pressed")
 		updateUI()
 	# Update other attributes and game mechanics
+	
+func placeBug():
+	# Increase creature count, humidity, and decrease temperature
+	if checkActionPoints():
+		addBug()
+		print("Bug button pressed")
+		updateUI()
 
 func addPlant(type):
 	var flower_scene
@@ -344,5 +351,4 @@ func _on_button_pressed():
 
 
 func _on_bug_button_pressed():
-	action_points-=1
-	addBug()
+	placeBug()

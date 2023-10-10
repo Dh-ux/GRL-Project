@@ -117,7 +117,6 @@ func on_next_day():
 			growth = 1
 		addPlant()
 		var temp = remap(growth,0.5,3,0.5,1)
-		scale = Vector2(temp,temp)*scale_modifier
 	
 #	# Update attributes
 #	temperature = randf_range(temperature-2, temperature+2)		
