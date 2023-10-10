@@ -279,9 +279,9 @@ position = Vector2(-87.4913, 13.9846)
 scale = Vector2(0.346798, 0.371649)
 texture = ExtResource("14_m42ou")
 
-[node name="flower" type="Node" parent="."]
-
 [node name="bush" type="Node" parent="."]
+
+[node name="flower" type="Node" parent="."]
 
 [node name="plant1" type="Node" parent="."]
 

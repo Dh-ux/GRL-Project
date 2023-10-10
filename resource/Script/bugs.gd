@@ -77,7 +77,7 @@ func addPlant():
 		#print("Successfully instantiated bug_instance")
 		var plant_positions = []
 		var random_x= get_global_position().x + randf_range(-220, 220)
-		var random_y= get_global_position().y + randf_range(-50, 50)
+		var random_y= get_global_position().y 
 		var temp = remap(growth,0,2,0.1,1)
 		var new_growth = randf_range(0.3,0.6)
 		random_x = clamp(random_x,480, 750)

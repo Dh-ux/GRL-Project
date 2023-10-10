@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://resource/Script/bugs.gd" id="2_wxnl7"]
 
 [node name="bugs" type="Sprite2D"]
-position = Vector2(623, 738)
+position = Vector2(622, 799)
 scale = Vector2(0.547407, 0.472101)
 texture = ExtResource("1_px26m")
 script = ExtResource("2_wxnl7")

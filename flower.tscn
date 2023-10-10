@@ -3,8 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://dnl0wm2k22vjk" path="res://resource/Art/creature/common Ferns 2.PNG" id="1_64lge"]
 [ext_resource type="Script" path="res://resource/Script/flower.gd" id="2_wd6d5"]
 
-[node name="flower" type="Sprite2D"]
-position = Vector2(428, 656.221)
-scale = Vector2(0.274725, 0.298436)
-texture = ExtResource("1_64lge")
+[node name="bush" type="Sprite2D"]
+position = Vector2(499, 692)
 script = ExtResource("2_wd6d5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-191.98, 20.7442)
+scale = Vector2(0.736371, 0.759274)
+texture = ExtResource("1_64lge")

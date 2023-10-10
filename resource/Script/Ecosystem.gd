@@ -194,7 +194,7 @@ func addBug():
 		print("Successfully instantiated bug_instance")
 		var plant_positions = []
 		var random_x= randf_range(480, 750)
-		var random_y= randf_range(600, 630)
+		var random_y= randf_range(647, 648)
 		var new_scale = randf_range(0.5,0.8)
 		random_x = clamp(random_x,450,900)
 #		while true:
@@ -344,4 +344,5 @@ func _on_button_pressed():
 
 
 func _on_bug_button_pressed():
+	action_points-=1
 	addBug()
