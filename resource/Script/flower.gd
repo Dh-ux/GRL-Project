@@ -63,8 +63,8 @@ func calculate_growth():
 			temp_growth *= 0.1
 	if abs(d/temp_range) > 3:
 		humid_growth *= 0.1
-	print("temp = "+str(temp_growth))
-	print("hum = "+str(humid_growth))
+	#print("temp = "+str(temp_growth))
+	#print("hum = "+str(humid_growth))
 	growth += (temp_growth + humid_growth)/2 * base_growth_per_day
 #	print(growth)
 #	var tempa = remap(growth,0,2,0.1,1)
@@ -81,7 +81,7 @@ func addPlant():
 		var random_x= get_global_position().x + randf_range(60, 120) * ((randi_range(0,1))*2.0-1)
 		var random_y= get_global_position().y+ randf_range(1, -1)
 		var new_growth = randf_range(0.3,0.6)
-		random_x = clamp(random_x,345,600)
+		random_x = clamp(random_x,345,650)
 #		while true:
 #			random_x = randf_range(345, 600)
 #			random_y = randf_range(360, 380)
@@ -122,6 +122,7 @@ func on_next_day():
 		queue_free()
 	var temp = remap(growth,0.1,3,0.8,1)
 	scale = Vector2(temp,temp)*scale_modifier
+
 #	# Update attributes
 #	temperature = randf_range(temperature-2, temperature+2)		
 #	humidity = randf_range(humidity-10, humidity+10)	

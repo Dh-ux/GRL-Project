@@ -25,8 +25,8 @@ func _ready():
 	add_to_group("plants")
 	update_eco()
 	var temp = remap(growth,0.1,3,0.8,1)
-#	scale = Vector2.ZERO
-	#scale = Vector2(temp,temp)*scale_modifier
+	scale = Vector2.ZERO
+#	#scale = Vector2(temp,temp)*scale_modifier
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_BACK).set_ease(1)
 	tween.tween_property(self, "scale", Vector2(temp,temp)*scale_modifier, 0.1)
 
@@ -64,8 +64,8 @@ func calculate_growth():
 			temp_growth *= 0.1
 	if abs(d/temp_range) > 3:
 		humid_growth *= 0.1
-	print("temp = "+str(temp_growth))
-	print("hum = "+str(humid_growth))
+	#print("temp = "+str(temp_growth))
+	#print("hum = "+str(humid_growth))
 	growth += (temp_growth + humid_growth)/2 * base_growth_per_day
 #	print(growth)
 #	var tempa = remap(growth,0,2,0.1,1)

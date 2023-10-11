@@ -24,7 +24,7 @@ func _ready():
 	update_eco()
 	var temp = remap(growth,0.1,3,0.9,1)
 	scale = Vector2.ZERO
-	#scale = Vector2(temp,temp)*scale_modifier
+#	#scale = Vector2(temp,temp)*scale_modifier
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_BACK).set_ease(1)
 	tween.tween_property(self, "scale", Vector2(temp,temp)*scale_modifier, 0.1)
 
@@ -39,13 +39,37 @@ func update_eco():
 func calculate_growth():
 	var temp_growth = 0.2
 	var humid_growth = 0.2
-	if temperature>=24 and temperature <=32:
-		temp_growth = temperature/28 * 0.5
-		#print("temperature is right!")
-		if humidity >= 60 and humidity <= 90:
-			humid_growth = humidity/75 * 0.5
-			#print("humidity is right!")
-	growth += (temp_growth + humid_growth) * base_growth_per_day
+	
+	var d = abs(temperature - temp_target) - temp_range
+	#if the temperature is in range
+	if d<=0:
+		temp_growth = 0.2 + abs(d/temp_range)
+	else:
+		#clamp(input; 与理想区间相差1倍时的最高惩罚; 当温度差==适宜温度时的保底生长)
+		#print("temp = "+str(-(abs(d/temp_range) -1)))
+		temp_growth = clamp(-(abs(d/temp_range) -1),-0.6,0)
+		if abs(d/temp_range) > 3:
+			humid_growth *= 0.1
+
+	var dh = abs(humidity - humidity_target) - humidity_range
+	#for humidity
+	if dh<=0:
+		humid_growth = 0.2 + abs(dh/humidity_range)
+	else:
+		#print("hum = "+str(-(abs(dh/humidity_range) -1)))
+		humid_growth = clamp(-(abs(dh/humidity_range) -1),-0.5,0)
+		if abs(dh/humidity_range) > 4:
+			temp_growth *= 0.1
+	if abs(d/temp_range) > 3:
+		humid_growth *= 0.1
+	#print("temp = "+str(temp_growth))
+	#print("hum = "+str(humid_growth))
+	growth += (temp_growth + humid_growth)/2 * base_growth_per_day
+#	print(growth)
+#	var tempa = remap(growth,0,2,0.1,1)
+#	scale = Vector2(tempa,tempa)*scale_modifier
+	if growth < 0.1:
+		queue_free()
 	
 
 func addPlant():
@@ -54,7 +78,7 @@ func addPlant():
 	if flower_instance != null:
 		print("Successfully instantiated flower_instance")
 		var plant_positions = []
-		var random_x= get_global_position().x + randf_range(60, 120) * ((randi_range(0,1))*2.0-1)
+		var random_x= get_global_position().x + randf_range(50, 125) * ((randi_range(0,1))*2.0-1)
 		var random_y= get_position().y + randf_range(1, -1)
 		var new_growth = randf_range(0.3,0.6)
 		random_x = clamp(random_x,345,600)
