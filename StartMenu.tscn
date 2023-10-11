@@ -33,12 +33,12 @@ offset_bottom = 677.0
 text = "Exit"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 461.0
-offset_top = 199.0
-offset_right = 1284.0
-offset_bottom = 492.0
+offset_left = 347.0
+offset_top = 181.0
+offset_right = 1170.0
+offset_bottom = 474.0
 theme_override_font_sizes/font_size = 90
-text = "10-Days"
+text = "10-Days Frog"
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Credit" to="." method="_on_credit_pressed"]

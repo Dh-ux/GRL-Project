@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c54ljjqgpci6"]
+[gd_scene load_steps=31 format=3 uid="uid://c54ljjqgpci6"]
 
 [ext_resource type="Script" path="res://resource/Script/Ecosystem.gd" id="1_fni7g"]
 [ext_resource type="Texture2D" uid="uid://cmgs2wfxqwn6j" path="res://resource/Art/Background/sunny with birds.PNG" id="2_b6p65"]
@@ -21,6 +21,14 @@
 [ext_resource type="Texture2D" uid="uid://64ssdo6ghwqp" path="res://resource/Art/UI/actionpoint.png" id="14_m42ou"]
 [ext_resource type="Texture2D" uid="uid://e5fe2rnlw052" path="res://resource/Art/UI/todo.png" id="15_xkqt4"]
 [ext_resource type="Script" path="res://NextDayButton.gd" id="16_bcj8g"]
+[ext_resource type="Texture2D" uid="uid://bdrwcioodct1n" path="res://resource/Art/plantpanel/background.PNG" id="21_ldk6y"]
+[ext_resource type="Texture2D" uid="uid://bslfw5o1plgmj" path="res://resource/Art/plantpanel/common fern.PNG" id="22_dsbqx"]
+[ext_resource type="Texture2D" uid="uid://lugpqttu1of3" path="res://resource/Art/plantpanel/melasromes.PNG" id="23_ajehu"]
+[ext_resource type="Texture2D" uid="uid://djdgbnncqt4l7" path="res://resource/Art/plantpanel/lobster claws.PNG" id="24_fn5kp"]
+[ext_resource type="AudioStream" uid="uid://b3p5uopo6ae1" path="res://resource/Art/music/邱有句 - 夏の喚く.mp3" id="26_esggh"]
+[ext_resource type="AudioStream" uid="uid://qar7m06kwknm" path="res://resource/Art/music/buttonsound.mp3" id="26_xxx35"]
+[ext_resource type="Script" path="res://AudioStreamPlayer2D.gd" id="27_qjoxm"]
+[ext_resource type="Script" path="res://buttonsound.gd" id="27_rpstb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rel1o"]
 bg_color = Color(0.980392, 0.980392, 0.980392, 1)
@@ -236,6 +244,19 @@ position = Vector2(-13.4612, 11.8711)
 scale = Vector2(0.411904, 0.453758)
 texture = ExtResource("12_p0vol")
 
+[node name="Action_pointsLabel" type="Label" parent="."]
+offset_left = 221.66
+offset_top = 622.242
+offset_right = 388.66
+offset_bottom = 667.242
+theme_override_colors/font_color = Color(0.0784314, 0.0352941, 0.0352941, 1)
+text = ": 3"
+
+[node name="Sprite2D" type="Sprite2D" parent="Action_pointsLabel"]
+position = Vector2(-87.4913, 13.9846)
+scale = Vector2(0.346798, 0.371649)
+texture = ExtResource("14_m42ou")
+
 [node name="NextDayButton" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
@@ -266,19 +287,6 @@ texture = ExtResource("13_2f2w0")
 
 [node name="Timer" type="Timer" parent="NextDayButton"]
 
-[node name="Action_pointsLabel" type="Label" parent="."]
-offset_left = 221.66
-offset_top = 622.242
-offset_right = 388.66
-offset_bottom = 667.242
-theme_override_colors/font_color = Color(0.0784314, 0.0352941, 0.0352941, 1)
-text = ": 3"
-
-[node name="Sprite2D" type="Sprite2D" parent="Action_pointsLabel"]
-position = Vector2(-87.4913, 13.9846)
-scale = Vector2(0.346798, 0.371649)
-texture = ExtResource("14_m42ou")
-
 [node name="bush" type="Node" parent="."]
 
 [node name="flower" type="Node" parent="."]
@@ -289,56 +297,54 @@ texture = ExtResource("14_m42ou")
 
 [node name="PlantPanel" type="Panel" parent="."]
 visible = false
-offset_left = 812.0
-offset_top = 499.0
-offset_right = 1002.0
-offset_bottom = 642.0
+offset_left = 808.565
+offset_top = 498.585
+offset_right = 843.565
+offset_bottom = 641.585
+
+[node name="Sprite2D" type="Sprite2D" parent="PlantPanel"]
+position = Vector2(-8.974, 101.894)
+scale = Vector2(0.399598, 0.433965)
+texture = ExtResource("21_ldk6y")
 
 [node name="flower" type="Button" parent="PlantPanel"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 11.0
-offset_right = 71.0
-offset_bottom = 69.0
+offset_left = -43.973
+offset_top = 2.9678
+offset_right = 12.027
+offset_bottom = 60.9678
 text = "Ferns"
+
+[node name="Sprite2D" type="Sprite2D" parent="PlantPanel/flower"]
+position = Vector2(27.8196, 28.6884)
+scale = Vector2(0.418879, 0.51319)
+texture = ExtResource("22_dsbqx")
 
 [node name="bush" type="Button" parent="PlantPanel"]
 layout_mode = 0
-offset_left = 81.8186
-offset_top = 10.4672
-offset_right = 184.819
-offset_bottom = 68.4672
-text = "Melasromes"
+offset_left = -44.8704
+offset_top = 73.205
+offset_right = 13.1296
+offset_bottom = 135.205
+text = "Mel"
+
+[node name="Sprite2D" type="Sprite2D" parent="PlantPanel/bush"]
+position = Vector2(30.5119, 31.6562)
+scale = Vector2(0.444766, 0.50297)
+texture = ExtResource("23_ajehu")
 
 [node name="plant1" type="Button" parent="PlantPanel"]
 layout_mode = 0
-offset_left = 17.0507
-offset_top = 79.1405
-offset_right = 75.0507
-offset_bottom = 131.141
-text = "Lobster claws"
+offset_left = -44.8704
+offset_top = 147.399
+offset_right = 13.1296
+offset_bottom = 199.4
+text = "Lob"
 
-[node name="GuidePanel" type="Panel" parent="."]
-visible = false
-offset_top = -4.0
-offset_right = 1149.0
-offset_bottom = 788.0
-
-[node name="TextEdit" type="TextEdit" parent="GuidePanel"]
-layout_mode = 0
-offset_left = 174.995
-offset_top = 173.163
-offset_right = 940.995
-offset_bottom = 535.163
-text = "At the beginning of the story: "
-
-[node name="Continue" type="Button" parent="GuidePanel"]
-layout_mode = 0
-offset_left = 507.933
-offset_top = 478.843
-offset_right = 586.933
-offset_bottom = 517.843
-text = "Continue"
+[node name="Sprite2D" type="Sprite2D" parent="PlantPanel/plant1"]
+position = Vector2(29.6144, 25.7207)
+scale = Vector2(0.37709, 0.440499)
+texture = ExtResource("24_fn5kp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -378,6 +384,47 @@ offset_right = 643.0
 offset_bottom = 242.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rel1o")
 
+[node name="GuidePanel" type="Panel" parent="."]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1148.0
+offset_bottom = 791.0
+
+[node name="TextEdit" type="TextEdit" parent="GuidePanel"]
+layout_mode = 0
+offset_left = 188.456
+offset_top = 215.701
+offset_right = 972.456
+offset_bottom = 544.701
+text = "It's my birthday in ten days. A friend of mine said he would pick a frog for me as my birthday gift.
+
+At the same time, he also left me a hint: to raise a frog, you must create a tiny ecosystem for him/her.
+
+In order to keep his/her food bugs alive, it is necessary to plant six plants in advance.
+Once the plants have grown to a certain size, and the bugs have been added.
+
+What I need to do is to start from planting. use what I have to achieve the goal.
+
+Everything is ready, let's get started!"
+wrap_mode = 1
+
+[node name="Continue" type="Button" parent="GuidePanel"]
+layout_mode = 0
+offset_left = 511.523
+offset_top = 504.564
+offset_right = 590.523
+offset_bottom = 543.564
+text = "Continue"
+
+[node name="buttonsound" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1, 1)
+stream = ExtResource("26_xxx35")
+script = ExtResource("27_rpstb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("26_esggh")
+script = ExtResource("27_qjoxm")
+
 [connection signal="ready" from="Panel/CheckBox" to="." method="_on_check_box_ready"]
 [connection signal="ready" from="Panel/CheckBox2" to="." method="_on_check_box_2_ready"]
 [connection signal="ready" from="Panel/CheckBox3" to="." method="_on_check_box_3_ready"]
@@ -385,31 +432,39 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rel1o")
 [connection signal="mouse_exited" from="MistingSystemButton" to="MistingSystemButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="MistingSystemButton" to="." method="_on_misting_system_button_pressed"]
 [connection signal="pressed" from="MistingSystemButton" to="MistingSystemButton" method="_on_pressed"]
+[connection signal="pressed" from="MistingSystemButton" to="buttonsound" method="_on_misting_system_button_pressed"]
 [connection signal="mouse_entered" from="OpenCurtainsButton" to="OpenCurtainsButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="OpenCurtainsButton" to="OpenCurtainsButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="OpenCurtainsButton" to="." method="_on_open_curtains_button_pressed"]
 [connection signal="pressed" from="OpenCurtainsButton" to="OpenCurtainsButton" method="_on_pressed"]
+[connection signal="pressed" from="OpenCurtainsButton" to="buttonsound" method="_on_open_curtains_button_pressed"]
 [connection signal="mouse_entered" from="PlantButton" to="PlantButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PlantButton" to="PlantButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="PlantButton" to="." method="_on_plant_button_pressed"]
 [connection signal="pressed" from="PlantButton" to="PlantButton" method="_on_pressed"]
+[connection signal="pressed" from="PlantButton" to="buttonsound" method="_on_plant_button_pressed"]
 [connection signal="mouse_entered" from="BugButton" to="BugButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BugButton" to="BugButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="BugButton" to="." method="_on_bug_button_pressed"]
 [connection signal="pressed" from="BugButton" to="BugButton" method="_on_pressed"]
+[connection signal="pressed" from="BugButton" to="buttonsound" method="_on_bug_button_pressed"]
 [connection signal="ready" from="TemperatureLabel" to="." method="_on_temperature_label_ready"]
 [connection signal="ready" from="DaysLabel" to="." method="_on_days_label_ready"]
 [connection signal="ready" from="CreatureCountLabel" to="." method="_on_creature_count_label_ready"]
 [connection signal="ready" from="HumidityProgressBar" to="." method="_on_humidity_progress_bar_ready"]
+[connection signal="ready" from="Action_pointsLabel" to="." method="_on_action_points_label_ready"]
 [connection signal="mouse_entered" from="NextDayButton" to="NextDayButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="NextDayButton" to="NextDayButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="NextDayButton" to="." method="_on_next_day_button_pressed"]
 [connection signal="pressed" from="NextDayButton" to="NextDayButton" method="_on_pressed"]
+[connection signal="pressed" from="NextDayButton" to="buttonsound" method="_on_next_day_button_pressed"]
 [connection signal="timeout" from="NextDayButton/Timer" to="NextDayButton" method="_on_timer_timeout"]
-[connection signal="ready" from="Action_pointsLabel" to="." method="_on_action_points_label_ready"]
 [connection signal="pressed" from="PlantPanel/flower" to="." method="_on_flower_pressed"]
+[connection signal="pressed" from="PlantPanel/flower" to="buttonsound" method="_on_flower_pressed"]
 [connection signal="pressed" from="PlantPanel/bush" to="." method="_on_bush_pressed"]
+[connection signal="pressed" from="PlantPanel/bush" to="buttonsound" method="_on_bush_pressed"]
 [connection signal="pressed" from="PlantPanel/plant1" to="." method="_on_plant_1_pressed"]
-[connection signal="pressed" from="GuidePanel/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="PlantPanel/plant1" to="buttonsound" method="_on_plant_1_pressed"]
 [connection signal="ready" from="Sprite2D/Day" to="." method="_on_day_ready"]
 [connection signal="pressed" from="Sprite2D/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GuidePanel/Continue" to="." method="_on_continue_pressed"]

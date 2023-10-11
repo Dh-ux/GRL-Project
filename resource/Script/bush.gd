@@ -100,7 +100,6 @@ func addPlant():
 #		# Set the plant's position
 		flower_instance.position = Vector2(random_x, random_y)
 		flower_instance.growth = new_growth
-		flower_instance.scale_modifier = randf_range(0.7,1)
 		get_parent().add_child(flower_instance)
 	else:
 		print("flower_instance is null")
@@ -118,7 +117,6 @@ func on_next_day():
 		addPlant()
 		growth -= 0.5
 	var temp = remap(growth,0,2,0.1,1)
-	scale = Vector2(temp,temp)*scale_modifier
 	
 #	# Update attributes
 #	temperature = randf_range(temperature-2, temperature+2)		

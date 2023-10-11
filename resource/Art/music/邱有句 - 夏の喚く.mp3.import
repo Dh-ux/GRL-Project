@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b3p5uopo6ae1"
+path="res://.godot/imported/邱有句 - 夏の喚く.mp3-3cc8ac46234180f03d97759b3d034365.mp3str"
+
+[deps]
+
+source_file="res://resource/Art/music/邱有句 - 夏の喚く.mp3"
+dest_files=["res://.godot/imported/邱有句 - 夏の喚く.mp3-3cc8ac46234180f03d97759b3d034365.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
