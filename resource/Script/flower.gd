@@ -22,7 +22,7 @@ func _ready():
 	eco_system.day_end.connect(on_next_day)
 	add_to_group("plants")
 	update_eco()
-	var temp = remap(growth,0.1,3,0.4,1)
+	var temp = remap(growth,0.1,3,0.8,1)
 	scale = Vector2.ZERO
 	#scale = Vector2(temp,temp)*scale_modifier
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_BACK).set_ease(1)
@@ -78,8 +78,8 @@ func addPlant():
 	if flower_instance != null:
 		print("Successfully instantiated flower_instance")
 		var plant_positions = []
-		var random_x= get_global_position().x + randf_range(120, -120)
-		var random_y= get_global_position().y
+		var random_x= get_global_position().x + randf_range(60, 120) * ((randi_range(0,1))*2.0-1)
+		var random_y= get_global_position().y+ randf_range(1, -1)
 		var new_growth = randf_range(0.3,0.6)
 		random_x = clamp(random_x,345,600)
 #		while true:
@@ -117,10 +117,11 @@ func on_next_day():
 			growth = 2
 		addPlant()
 		growth -= 0.5
-		var temp = remap(growth,0.5,3,0.5,1)
+		#var temp = remap(growth,0.5,3,0.5,1)
 	if growth < 0.1:
 		queue_free()
-	
+	var temp = remap(growth,0.1,3,0.8,1)
+	scale = Vector2(temp,temp)*scale_modifier
 #	# Update attributes
 #	temperature = randf_range(temperature-2, temperature+2)		
 #	humidity = randf_range(humidity-10, humidity+10)	

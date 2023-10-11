@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dxj0ve51qc5hs" path="res://resource/Art/creature/lobster claws1.PNG" id="2_gaai2"]
 
 [node name="plant1" type="Node2D"]
+position = Vector2(0, 224)
 script = ExtResource("1_adcww")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-46, 116)
+position = Vector2(12, -97)
 scale = Vector2(0.745454, 0.766451)
 texture = ExtResource("2_gaai2")

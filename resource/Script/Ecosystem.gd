@@ -163,7 +163,7 @@ func addPlant(type):
 		var random_y
 		while true:
 			random_x = randf_range(480, 750)
-			random_y = randf_range(550, 570)
+			random_y = randf_range(670, 690)
 			var overlapping = false
 			# Check for overlap with existing plant positions
 			for existing_position in plant_positions:

@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://b5fw8a8llohbb" path="res://resource/Art/creature/melasromes 3.PNG" id="2_hlei0"]
 
 [node name="bush" type="Sprite2D"]
-position = Vector2(499, 692)
+position = Vector2(508, 904)
 script = ExtResource("1_08s1n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-121, -33)
+position = Vector2(3, -253)
 scale = Vector2(0.742621, 0.817991)
 texture = ExtResource("2_hlei0")

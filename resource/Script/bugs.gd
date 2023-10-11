@@ -16,8 +16,8 @@ func _ready():
 	eco_system.day_end.connect(on_next_day)
 	add_to_group("animals")
 	update_eco()
-	var temp = remap(growth,0.5,3,0.2,1)
-#	scale = Vector2.ZERO
+	var temp = remap(growth,0.1,2,0.9,1)
+	scale = Vector2.ZERO
 	#scale = Vector2(temp,temp)*scale_modifier
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_BACK).set_ease(1)
 	tween.tween_property(self, "scale", Vector2(temp,temp)*scale_modifier, 0.1)
@@ -54,12 +54,14 @@ func calculate_growth():
 				break
 		if target_plant:
 			print('eating plant ')
-			target_plant.growth -= 2
-			var temp = remap(target_plant.growth,0.1,3,0,1)
-#			target_plant.scale = Vector2(temp,temp)*scale_modifier
+			target_plant.growth -= 0.8
+			var temp = remap(target_plant.growth,0.1,2,0.4,1)
+			target_plant.scale = Vector2(temp,temp)*scale_modifier
+			if target_plant.growth <= 0.1:
+				target_plant.queue_free()
 			growth += 1 + temp_growth * humid_growth
 		else:
-			growth -= 0.5
+			growth -= 0.3
 			if growth < 0:
 				queue_free()
 	else:
@@ -67,7 +69,9 @@ func calculate_growth():
 		if growth < 0:
 			queue_free()
 		#temporary balance solution
-		plant.pick_random().queue_free()
+#		var aplant = plant.pick_random().queue_free()
+#		if aplant:
+#			growth += 0.3
 	
 
 func addPlant():
@@ -77,8 +81,8 @@ func addPlant():
 		#print("Successfully instantiated bug_instance")
 		var plant_positions = []
 		var random_x= get_global_position().x + randf_range(-220, 220)
-		var random_y= get_global_position().y 
-		var temp = remap(growth,0,2,0.1,1)
+		var random_y= get_global_position().y + randf_range(-1, 1)
+		var temp = remap(growth,0,2,0.9,1)
 		var new_growth = randf_range(0.3,0.6)
 		random_x = clamp(random_x,480, 750)
 #		while true:
@@ -116,7 +120,8 @@ func on_next_day():
 		if growth >=2:
 			growth = 1
 		addPlant()
-		var temp = remap(growth,0.5,3,0.5,1)
+	var temp = remap(growth,0.1,2,0.9,1)
+	scale = Vector2(temp,temp)*scale_modifier
 	
 #	# Update attributes
 #	temperature = randf_range(temperature-2, temperature+2)		

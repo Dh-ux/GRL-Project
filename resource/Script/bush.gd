@@ -14,6 +14,8 @@ var type
 var growth = 1
 var days =0
 
+var generation = 0
+
 var scale_modifier = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,7 +24,7 @@ func _ready():
 	eco_system.day_end.connect(on_next_day)
 	add_to_group("plants")
 	update_eco()
-	var temp = remap(growth,0.1,3,0.4,1)
+	var temp = remap(growth,0.1,3,0.8,1)
 #	scale = Vector2.ZERO
 	#scale = Vector2(temp,temp)*scale_modifier
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_BACK).set_ease(1)
@@ -77,7 +79,7 @@ func addPlant():
 	if flower_instance != null:
 		#print("Successfully instantiated flower_instance")
 		var plant_positions = []
-		var random_x= get_global_position().x + randf_range(120, -120)
+		var random_x= get_global_position().x + randf_range(60, 120) * ((randi_range(0,1))*2.0-1)
 		var random_y= get_global_position().y 
 		var new_growth = randf_range(0.3,0.6)
 		random_x = clamp(random_x,480, 750)
@@ -116,8 +118,8 @@ func on_next_day():
 			growth = 2
 		addPlant()
 		growth -= 0.5
-	var temp = remap(growth,0,2,0.1,1)
-	
+	var temp = remap(growth,0.1,3,0.8,1)
+	scale = Vector2(temp,temp)*scale_modifier
 #	# Update attributes
 #	temperature = randf_range(temperature-2, temperature+2)		
 #	humidity = randf_range(humidity-10, humidity+10)	

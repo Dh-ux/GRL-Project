@@ -5,6 +5,8 @@
 
 [node name="bugs" type="Sprite2D"]
 position = Vector2(622, 799)
-scale = Vector2(0.547407, 0.472101)
-texture = ExtResource("1_px26m")
 script = ExtResource("2_wxnl7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.547, 0.472)
+texture = ExtResource("1_px26m")
