@@ -133,12 +133,12 @@ script = ExtResource("7_65fyg")
 visible = false
 modulate = Color(5, 4.73, 5, 1)
 self_modulate = Color(0.764706, 0.2, 0.129412, 1)
-position = Vector2(343.707, 14.5855)
+position = Vector2(343.707, 6.895)
 scale = Vector2(0.434162, 0.0884284)
 texture = ExtResource("6_7vwkj")
 
 [node name="Sprite2D" type="Sprite2D" parent="OpenCurtainsButton"]
-position = Vector2(343.707, 14.5855)
+position = Vector2(343.707, 6.89497)
 scale = Vector2(0.422777, 0.0765692)
 texture = ExtResource("6_7vwkj")
 
