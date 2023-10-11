@@ -55,8 +55,8 @@ func calculate_growth():
 		if target_plant:
 			print('eating plant ')
 			target_plant.growth -= 0.8
-			var temp = remap(target_plant.growth,0.1,2,0.4,1)
-			target_plant.scale = Vector2(temp,temp)*scale_modifier
+			#var temp = remap(target_plant.growth,0.1,2,0.4,1)
+			#target_plant.scale = Vector2(temp,temp)*scale_modifier
 			if target_plant.growth <= 0.1:
 				target_plant.queue_free()
 			growth += 1 + temp_growth * humid_growth
@@ -120,8 +120,9 @@ func on_next_day():
 		if growth >=2:
 			growth = 1
 		addPlant()
-	var temp = remap(growth,0.1,2,0.9,1)
-	scale = Vector2(temp,temp)*scale_modifier
+	
+#	var temp = remap(growth,0.1,2,0.9,1)
+#	scale = Vector2(temp,temp)*scale_modifier
 	
 #	# Update attributes
 #	temperature = randf_range(temperature-2, temperature+2)		
