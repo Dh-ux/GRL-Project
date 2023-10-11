@@ -81,7 +81,7 @@ func addPlant():
 		var random_x= get_global_position().x + randf_range(50, 125) * ((randi_range(0,1))*2.0-1)
 		var random_y= get_position().y + randf_range(1, -1)
 		var new_growth = randf_range(0.3,0.6)
-		random_x = clamp(random_x,345,600)
+		random_x = clamp(random_x,400,680)
 #		while true:
 #			random_x = randf_range(345, 600)
 #			random_y = randf_range(360, 380)

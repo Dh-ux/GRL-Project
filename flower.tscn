@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://resource/Script/flower.gd" id="2_wd6d5"]
 
 [node name="bush" type="Sprite2D"]
-position = Vector2(503, 793)
+position = Vector2(538, 793)
 script = ExtResource("2_wd6d5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
