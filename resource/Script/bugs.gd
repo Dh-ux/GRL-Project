@@ -101,9 +101,10 @@ func addPlant():
 #		# Generate random coordinates for the plant's position
 #		var random_x = randf_range(345, 600)  # Adjust the range as needed
 #		var random_y = randf_range(360, 380)  # Adjust the range as needed
-#		# Set the plant's position
+#		# Set the plant's position 
 		flower_instance.set_global_position(Vector2(random_x, random_y))
 		flower_instance.growth = new_growth
+		flower_instance.scale_modifier = randf_range(0.2,0.4)
 #		flower_instance.scale_modifier = randf_range(0.2,0.4)
 		get_parent().add_child(flower_instance)
 	else:

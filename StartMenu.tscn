@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b50oaplnp1dkc"]
+[gd_scene load_steps=9 format=3 uid="uid://b50oaplnp1dkc"]
 
 [ext_resource type="Script" path="res://resource/Script/StartMenu.gd" id="1_fah51"]
 [ext_resource type="Texture2D" uid="uid://b7bvdaw73w4in" path="res://resource/sprites/Background/start-page.PNG" id="2_cbe0n"]
 [ext_resource type="Texture2D" uid="uid://cohx408slxtfw" path="res://resource/Art/UI/start Button.PNG" id="3_c0ev4"]
+[ext_resource type="Script" path="res://MistingSystemButton.gd" id="3_nswej"]
 [ext_resource type="Texture2D" uid="uid://br7ffu11d4x0d" path="res://resource/Art/UI/Credit Button.PNG" id="4_yltaa"]
 [ext_resource type="Texture2D" uid="uid://dd23oiuys51l8" path="res://resource/Art/UI/Exit Button.PNG" id="5_nwo3x"]
+[ext_resource type="AudioStream" uid="uid://qar7m06kwknm" path="res://resource/Art/music/buttonsound.mp3" id="7_g3mor"]
 [ext_resource type="Script" path="res://AudioStreamPlayer.gd" id="7_ygxdn"]
 
 [node name="StartMenu" type="Node2D"]
@@ -22,6 +24,7 @@ offset_right = 362.0
 offset_bottom = 410.0
 text = "Start"
 clip_text = true
+script = ExtResource("3_nswej")
 
 [node name="Label" type="Label" parent="Start"]
 z_index = 2
@@ -46,6 +49,7 @@ offset_top = 493.0
 offset_right = 367.0
 offset_bottom = 547.0
 text = "Credit"
+script = ExtResource("3_nswej")
 
 [node name="Sprite2D" type="Sprite2D" parent="Credit"]
 position = Vector2(114, 30)
@@ -69,6 +73,7 @@ offset_top = 606.0
 offset_right = 369.0
 offset_bottom = 665.0
 text = "Exit"
+script = ExtResource("3_nswej")
 
 [node name="Sprite2D" type="Sprite2D" parent="Exit"]
 position = Vector2(122, 30)
@@ -86,18 +91,23 @@ theme_override_font_sizes/font_size = 60
 text = "EXIT"
 uppercase = true
 
-[node name="Label" type="Label" parent="."]
-offset_left = 1414.0
-offset_top = 184.0
-offset_right = 2237.0
-offset_bottom = 477.0
-theme_override_font_sizes/font_size = 90
-text = "10-Days Frog"
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_g3mor")
 script = ExtResource("7_ygxdn")
 
+[connection signal="mouse_entered" from="Start" to="Start" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Start" to="AudioStreamPlayer2D" method="_on_start_mouse_entered"]
+[connection signal="mouse_exited" from="Start" to="Start" method="_on_mouse_exited"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Start" to="Start" method="_on_pressed"]
 [connection signal="pressed" from="Start" to="AudioStreamPlayer2D" method="_on_start_pressed"]
+[connection signal="mouse_entered" from="Credit" to="Credit" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Credit" to="AudioStreamPlayer2D" method="_on_credit_mouse_entered"]
+[connection signal="mouse_exited" from="Credit" to="Credit" method="_on_mouse_exited"]
 [connection signal="pressed" from="Credit" to="." method="_on_credit_pressed"]
+[connection signal="pressed" from="Credit" to="Credit" method="_on_pressed"]
+[connection signal="mouse_entered" from="Exit" to="Exit" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Exit" to="AudioStreamPlayer2D" method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="Exit" to="Exit" method="_on_mouse_exited"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Exit" to="Exit" method="_on_pressed"]

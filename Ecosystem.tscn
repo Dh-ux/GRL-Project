@@ -27,8 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://djdgbnncqt4l7" path="res://resource/Art/plantpanel/lobster claws.PNG" id="24_fn5kp"]
 [ext_resource type="AudioStream" uid="uid://b3p5uopo6ae1" path="res://resource/Art/music/邱有句 - 夏の喚く.mp3" id="26_esggh"]
 [ext_resource type="AudioStream" uid="uid://qar7m06kwknm" path="res://resource/Art/music/buttonsound.mp3" id="26_xxx35"]
-[ext_resource type="Script" path="res://AudioStreamPlayer2D.gd" id="27_qjoxm"]
 [ext_resource type="Script" path="res://buttonsound.gd" id="27_rpstb"]
+[ext_resource type="Script" path="res://bgm.gd" id="29_umjo2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rel1o"]
 bg_color = Color(0.980392, 0.980392, 0.980392, 1)
@@ -422,7 +422,11 @@ script = ExtResource("27_rpstb")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("26_esggh")
-script = ExtResource("27_qjoxm")
+script = ExtResource("29_umjo2")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("26_xxx35")
+script = ExtResource("29_umjo2")
 
 [connection signal="ready" from="Panel/CheckBox" to="." method="_on_check_box_ready"]
 [connection signal="ready" from="Panel/CheckBox2" to="." method="_on_check_box_2_ready"]
