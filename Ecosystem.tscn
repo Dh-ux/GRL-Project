@@ -47,8 +47,8 @@ scale = Vector2(1.11432, 1.01086)
 script = ExtResource("1_fni7g")
 
 [node name="Weather" type="Sprite2D" parent="."]
-position = Vector2(819.334, 307.659)
-scale = Vector2(0.382894, 0.472358)
+position = Vector2(816.109, 307.659)
+scale = Vector2(0.386697, 0.472358)
 texture = ExtResource("2_b6p65")
 
 [node name="Table" type="Sprite2D" parent="."]
