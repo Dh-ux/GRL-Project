@@ -17,7 +17,7 @@ func _ready():
 	add_to_group("animals")
 	update_eco()
 	var temp = remap(growth,0.5,3,0.2,1)
-	scale = Vector2.ZERO
+#	scale = Vector2.ZERO
 	#scale = Vector2(temp,temp)*scale_modifier
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_BACK).set_ease(1)
 	tween.tween_property(self, "scale", Vector2(temp,temp)*scale_modifier, 0.1)
@@ -56,7 +56,7 @@ func calculate_growth():
 			print('eating plant ')
 			target_plant.growth -= 2
 			var temp = remap(target_plant.growth,0.1,3,0,1)
-			target_plant.scale = Vector2(temp,temp)*scale_modifier
+#			target_plant.scale = Vector2(temp,temp)*scale_modifier
 			growth += 1 + temp_growth * humid_growth
 		else:
 			growth -= 0.5

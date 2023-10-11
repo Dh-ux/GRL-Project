@@ -101,7 +101,7 @@ func addPlant():
 #		# Set the plant's position
 		flower_instance.position = Vector2(random_x, random_y)
 		flower_instance.growth = new_growth
-		flower_instance.scale_modifier = randf_range(0.7,1)
+#		flower_instance.scale_modifier = randf_range(0.7,1)
 		get_parent().add_child(flower_instance)
 	else:
 		print("flower_instance is null")
