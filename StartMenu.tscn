@@ -1,45 +1,103 @@
-[gd_scene load_steps=3 format=3 uid="uid://b50oaplnp1dkc"]
+[gd_scene load_steps=7 format=3 uid="uid://b50oaplnp1dkc"]
 
 [ext_resource type="Script" path="res://resource/Script/StartMenu.gd" id="1_fah51"]
-[ext_resource type="Texture2D" uid="uid://8sarfw7el1lj" path="res://resource/sprites/Background/StartMenu.png" id="2_vvm7b"]
+[ext_resource type="Texture2D" uid="uid://b7bvdaw73w4in" path="res://resource/sprites/Background/start-page.PNG" id="2_cbe0n"]
+[ext_resource type="Texture2D" uid="uid://cohx408slxtfw" path="res://resource/Art/UI/start Button.PNG" id="3_c0ev4"]
+[ext_resource type="Texture2D" uid="uid://br7ffu11d4x0d" path="res://resource/Art/UI/Credit Button.PNG" id="4_yltaa"]
+[ext_resource type="Texture2D" uid="uid://dd23oiuys51l8" path="res://resource/Art/UI/Exit Button.PNG" id="5_nwo3x"]
+[ext_resource type="Script" path="res://AudioStreamPlayer.gd" id="7_ygxdn"]
 
 [node name="StartMenu" type="Node2D"]
 script = ExtResource("1_fah51")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(645, 411)
-scale = Vector2(1.00273, 1.14514)
-texture = ExtResource("2_vvm7b")
+position = Vector2(706, 398)
+scale = Vector2(0.473032, 0.477783)
+texture = ExtResource("2_cbe0n")
 
 [node name="Start" type="Button" parent="."]
-offset_left = 571.0
-offset_top = 396.0
-offset_right = 718.0
-offset_bottom = 465.0
+offset_left = 122.0
+offset_top = 275.0
+offset_right = 362.0
+offset_bottom = 410.0
 text = "Start"
+clip_text = true
+
+[node name="Label" type="Label" parent="Start"]
+z_index = 2
+layout_mode = 0
+offset_left = 52.0
+offset_top = 43.0
+offset_right = 246.0
+offset_bottom = 129.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "START"
+uppercase = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Start"]
+position = Vector2(157, 87)
+scale = Vector2(0.444512, 0.43228)
+texture = ExtResource("3_c0ev4")
 
 [node name="Credit" type="Button" parent="."]
-offset_left = 564.0
-offset_top = 503.0
-offset_right = 717.0
-offset_bottom = 575.0
+offset_left = 135.0
+offset_top = 493.0
+offset_right = 367.0
+offset_bottom = 547.0
 text = "Credit"
 
+[node name="Sprite2D" type="Sprite2D" parent="Credit"]
+position = Vector2(114, 30)
+scale = Vector2(0.446553, 0.476657)
+texture = ExtResource("4_yltaa")
+
+[node name="Label" type="Label" parent="Credit/Sprite2D"]
+z_index = 2
+offset_left = -94.0538
+offset_top = -44.0569
+offset_right = 110.946
+offset_bottom = 41.9431
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "CREDIT"
+uppercase = true
+
 [node name="Exit" type="Button" parent="."]
-offset_left = 565.0
-offset_top = 599.0
-offset_right = 721.0
-offset_bottom = 677.0
+offset_left = 129.0
+offset_top = 606.0
+offset_right = 369.0
+offset_bottom = 665.0
 text = "Exit"
 
+[node name="Sprite2D" type="Sprite2D" parent="Exit"]
+position = Vector2(122, 30)
+scale = Vector2(0.449128, 0.452932)
+texture = ExtResource("5_nwo3x")
+
+[node name="Label" type="Label" parent="Exit/Sprite2D"]
+z_index = 2
+offset_left = -57.89
+offset_top = -41.949
+offset_right = 136.11
+offset_bottom = 44.051
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "EXIT"
+uppercase = true
+
 [node name="Label" type="Label" parent="."]
-offset_left = 347.0
-offset_top = 181.0
-offset_right = 1170.0
-offset_bottom = 474.0
+offset_left = 1414.0
+offset_top = 184.0
+offset_right = 2237.0
+offset_bottom = 477.0
 theme_override_font_sizes/font_size = 90
 text = "10-Days Frog"
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("7_ygxdn")
+
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Start" to="AudioStreamPlayer2D" method="_on_start_pressed"]
 [connection signal="pressed" from="Credit" to="." method="_on_credit_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
