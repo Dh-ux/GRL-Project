@@ -102,7 +102,6 @@ func next_day():
 		else:
 			addBug()
 	if days ==7:
-		updateUI()
 		if creature_count < 10 || creature_count >15:
 			game_over()
 		else:
@@ -327,21 +326,6 @@ func _on_continue_pressed():
 func _on_plant_1_pressed():
 	placePlant(2)
 
-
-func _on_check_box_ready():
-	pass # Replace with function body.
-
-
-func _on_check_box_2_ready():
-	pass # Replace with function body.
-
-
-func _on_check_box_3_ready():
-	pass # Replace with function body.
-
-
-func _on_day_ready():
-	pass # Replace with function body.
 
 
 func _on_button_pressed():
