@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c54ljjqgpci6"]
+[gd_scene load_steps=32 format=3 uid="uid://c54ljjqgpci6"]
 
 [ext_resource type="Script" path="res://resource/Script/Ecosystem.gd" id="1_fni7g"]
 [ext_resource type="Texture2D" uid="uid://cmgs2wfxqwn6j" path="res://resource/Art/Background/sunny with birds.PNG" id="2_b6p65"]
@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://qar7m06kwknm" path="res://resource/Art/music/buttonsound.mp3" id="26_xxx35"]
 [ext_resource type="Script" path="res://buttonsound.gd" id="27_rpstb"]
 [ext_resource type="Script" path="res://bgm.gd" id="29_umjo2"]
+[ext_resource type="Texture2D" uid="uid://cohx408slxtfw" path="res://resource/Art/UI/start Button.PNG" id="30_5su05"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rel1o"]
 bg_color = Color(0.980392, 0.980392, 0.980392, 1)
@@ -121,10 +122,10 @@ texture = ExtResource("5_dec5c")
 
 [node name="OpenCurtainsButton" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-offset_left = 457.678
-offset_top = -0.989254
-offset_right = 1117.68
-offset_bottom = 101.011
+offset_left = 493.575
+offset_top = -53.4199
+offset_right = 1153.57
+offset_bottom = -22.4199
 scale = Vector2(1, 3.73035)
 text = "Curtain"
 script = ExtResource("7_65fyg")
@@ -133,12 +134,12 @@ script = ExtResource("7_65fyg")
 visible = false
 modulate = Color(5, 4.73, 5, 1)
 self_modulate = Color(0.764706, 0.2, 0.129412, 1)
-position = Vector2(343.707, 6.895)
+position = Vector2(345.502, 20.1545)
 scale = Vector2(0.434162, 0.0884284)
 texture = ExtResource("6_7vwkj")
 
 [node name="Sprite2D" type="Sprite2D" parent="OpenCurtainsButton"]
-position = Vector2(343.707, 6.89497)
+position = Vector2(346.4, 19.359)
 scale = Vector2(0.422777, 0.0765692)
 texture = ExtResource("6_7vwkj")
 
@@ -385,6 +386,7 @@ offset_bottom = 242.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rel1o")
 
 [node name="GuidePanel" type="Panel" parent="."]
+visible = false
 offset_left = 1.0
 offset_top = -1.0
 offset_right = 1148.0
@@ -427,6 +429,32 @@ script = ExtResource("29_umjo2")
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("26_xxx35")
 script = ExtResource("29_umjo2")
+
+[node name="RandomEvents" type="Panel" parent="."]
+offset_right = 1153.0
+offset_bottom = 793.0
+
+[node name="Dinning" type="Button" parent="RandomEvents"]
+layout_mode = 2
+offset_left = 158.0
+offset_top = 173.0
+offset_right = 359.0
+offset_bottom = 501.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RandomEvents/Dinning"]
+position = Vector2(128.273, 185.111)
+scale = Vector2(0.368813, 0.955439)
+texture = ExtResource("30_5su05")
+
+[node name="Label" type="Label" parent="RandomEvents/Dinning"]
+layout_mode = 0
+offset_left = 6.22571
+offset_top = 24.8513
+offset_right = 194.226
+offset_bottom = 246.851
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Have dinner in a new restaurant"
+autowrap_mode = 3
 
 [connection signal="ready" from="Panel/CheckBox" to="." method="_on_check_box_ready"]
 [connection signal="ready" from="Panel/CheckBox2" to="." method="_on_check_box_2_ready"]
