@@ -466,10 +466,10 @@ offset_bottom = 797.0
 
 [node name="dinning" type="Button" parent="random"]
 layout_mode = 0
-offset_left = 141.791
-offset_top = 138.496
-offset_right = 395.791
-offset_bottom = 500.496
+offset_left = 130.124
+offset_top = 189.937
+offset_right = 384.124
+offset_bottom = 551.937
 
 [node name="before" type="Sprite2D" parent="random/dinning"]
 position = Vector2(122.944, 173.12)
@@ -496,10 +496,10 @@ autowrap_mode = 2
 
 [node name="kitty" type="Button" parent="random"]
 layout_mode = 0
-offset_left = 465.755
-offset_top = 139.485
-offset_right = 719.755
-offset_bottom = 501.485
+offset_left = 454.088
+offset_top = 190.926
+offset_right = 708.088
+offset_bottom = 552.926
 
 [node name="before" type="Sprite2D" parent="random/kitty"]
 position = Vector2(130.124, 179.056)
@@ -508,8 +508,8 @@ texture = ExtResource("33_uk82u")
 
 [node name="after" type="Sprite2D" parent="random/kitty"]
 visible = false
-position = Vector2(134.611, 174.109)
-scale = Vector2(0.459942, 0.515262)
+position = Vector2(133.03, 174.109)
+scale = Vector2(0.465258, 0.515262)
 texture = ExtResource("34_q420n")
 
 [node name="Label" type="Label" parent="random/kitty"]
@@ -527,10 +527,10 @@ autowrap_mode = 2
 
 [node name="game" type="Button" parent="random"]
 layout_mode = 0
-offset_left = 796.899
-offset_top = 151.356
-offset_right = 1050.9
-offset_bottom = 513.356
+offset_left = 785.232
+offset_top = 202.797
+offset_right = 1039.23
+offset_bottom = 564.797
 
 [node name="before" type="Sprite2D" parent="random/game"]
 position = Vector2(133.705, 166.195)
@@ -558,10 +558,10 @@ autowrap_mode = 2
 
 [node name="finish" type="Button" parent="random"]
 layout_mode = 0
-offset_left = 529.471
-offset_top = 585.64
-offset_right = 640.471
-offset_bottom = 660.64
+offset_left = 517.804
+offset_top = 637.081
+offset_right = 628.804
+offset_bottom = 712.081
 text = "Finsh"
 
 [connection signal="ready" from="Panel/CheckBox4" to="." method="_on_check_box_ready"]
