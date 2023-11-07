@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c54ljjqgpci6"]
+[gd_scene load_steps=38 format=3 uid="uid://c54ljjqgpci6"]
 
 [ext_resource type="Script" path="res://resource/Script/Ecosystem.gd" id="1_fni7g"]
 [ext_resource type="Texture2D" uid="uid://cmgs2wfxqwn6j" path="res://resource/Art/Background/sunny with birds.PNG" id="2_b6p65"]
@@ -30,8 +30,12 @@
 [ext_resource type="AudioStream" uid="uid://qar7m06kwknm" path="res://resource/Art/music/buttonsound.mp3" id="26_xxx35"]
 [ext_resource type="Script" path="res://buttonsound.gd" id="27_rpstb"]
 [ext_resource type="Script" path="res://bgm.gd" id="29_umjo2"]
-[ext_resource type="Texture2D" uid="uid://dd23oiuys51l8" path="res://resource/Art/UI/Exit Button.PNG" id="30_a41t0"]
-[ext_resource type="Texture2D" uid="uid://br7ffu11d4x0d" path="res://resource/Art/UI/Credit Button.PNG" id="31_gu42k"]
+[ext_resource type="Texture2D" uid="uid://b40656ydbt6po" path="res://resource/Art/special event card/dining-reservation.png" id="31_o3mne"]
+[ext_resource type="Texture2D" uid="uid://bvg8bqs47cf3j" path="res://resource/Art/special event card/dining-reservation-1.png" id="32_no70j"]
+[ext_resource type="Texture2D" uid="uid://dkelq5ti7anpa" path="res://resource/Art/special event card/kitty-cuteness.png" id="33_uk82u"]
+[ext_resource type="Texture2D" uid="uid://cqjxui6imk1fc" path="res://resource/Art/special event card/kitty-cuteness-1.png" id="34_q420n"]
+[ext_resource type="Texture2D" uid="uid://xk0e0j2yy1nx" path="res://resource/Art/special event card/gaming-glory.png" id="35_i6x0v"]
+[ext_resource type="Texture2D" uid="uid://yn00aacj2faf" path="res://resource/Art/special event card/gaming-glory-1.png" id="36_fq800"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rel1o"]
 bg_color = Color(0.980392, 0.980392, 0.980392, 1)
@@ -321,6 +325,7 @@ texture = ExtResource("14_m42ou")
 
 [node name="PlantPanel" type="Panel" parent="."]
 visible = false
+z_index = 1
 offset_left = 808.565
 offset_top = 498.585
 offset_right = 843.565
@@ -455,7 +460,7 @@ script = ExtResource("29_umjo2")
 
 [node name="random" type="Panel" parent="."]
 visible = false
-z_index = 1
+z_index = 2
 offset_right = 1165.0
 offset_bottom = 797.0
 
@@ -467,17 +472,18 @@ offset_right = 395.791
 offset_bottom = 500.496
 
 [node name="before" type="Sprite2D" parent="random/dinning"]
-position = Vector2(129.451, 186.881)
-scale = Vector2(0.459942, 2.82231)
-texture = ExtResource("30_a41t0")
+position = Vector2(122.944, 173.12)
+scale = Vector2(0.459942, 0.510918)
+texture = ExtResource("31_o3mne")
 
 [node name="after" type="Sprite2D" parent="random/dinning"]
 visible = false
-position = Vector2(129.451, 186.881)
-scale = Vector2(0.459942, 2.82231)
-texture = ExtResource("31_gu42k")
+position = Vector2(120.252, 174.921)
+scale = Vector2(0.459942, 0.497687)
+texture = ExtResource("32_no70j")
 
 [node name="Label" type="Label" parent="random/dinning"]
+visible = false
 layout_mode = 0
 offset_left = 26.9222
 offset_top = 96.9472
@@ -485,7 +491,6 @@ offset_right = 238.922
 offset_bottom = 461.947
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
-text = "Dinner in a new restaurant"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -497,17 +502,18 @@ offset_right = 719.755
 offset_bottom = 501.485
 
 [node name="before" type="Sprite2D" parent="random/kitty"]
-position = Vector2(129.451, 186.881)
-scale = Vector2(0.459942, 2.82231)
-texture = ExtResource("30_a41t0")
+position = Vector2(130.124, 179.056)
+scale = Vector2(0.459942, 0.510224)
+texture = ExtResource("33_uk82u")
 
 [node name="after" type="Sprite2D" parent="random/kitty"]
 visible = false
-position = Vector2(129.451, 186.881)
-scale = Vector2(0.459942, 2.82231)
-texture = ExtResource("31_gu42k")
+position = Vector2(134.611, 174.109)
+scale = Vector2(0.459942, 0.515262)
+texture = ExtResource("34_q420n")
 
 [node name="Label" type="Label" parent="random/kitty"]
+visible = false
 layout_mode = 0
 offset_left = 24.23
 offset_top = 115.743
@@ -527,17 +533,18 @@ offset_right = 1050.9
 offset_bottom = 513.356
 
 [node name="before" type="Sprite2D" parent="random/game"]
-position = Vector2(129.451, 186.881)
-scale = Vector2(0.459942, 2.82231)
-texture = ExtResource("30_a41t0")
+position = Vector2(133.705, 166.195)
+scale = Vector2(0.474075, 0.503535)
+texture = ExtResource("35_i6x0v")
 
 [node name="after" type="Sprite2D" parent="random/game"]
 visible = false
-position = Vector2(129.451, 186.881)
-scale = Vector2(0.459942, 2.82231)
-texture = ExtResource("31_gu42k")
+position = Vector2(133.856, 169.163)
+scale = Vector2(0.466533, 0.516338)
+texture = ExtResource("36_fq800")
 
 [node name="Label" type="Label" parent="random/game"]
+visible = false
 layout_mode = 0
 offset_left = 25.1274
 offset_top = 111.786
