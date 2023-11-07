@@ -65,7 +65,7 @@ func calculate_growth():
 			if growth < 0:
 				queue_free()
 	else:
-		growth -= 0.5
+		growth -= 0.2
 		if growth < 0:
 			queue_free()
 		#temporary balance solution

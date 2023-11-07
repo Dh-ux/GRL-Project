@@ -54,6 +54,7 @@ func register(object):
 	
 func unregister(type = 0):
 	creature_count-=1
+	updateUI()
 
 func next_day():
 #	for i in life_list:
@@ -65,10 +66,11 @@ func next_day():
 	$MistingSystemButton.disabled = false
 	$OpenCurtainsButton.disabled = false
 	$PlantButton.disabled = false
-	if creature_count>=7:
-		creature_count-=1
-	elif creature_count>=12:
-		creature_count-=2	
+	$ShovelButton.disabled = false
+	if creature_count>=12:
+		deleteplant()
+#	elif creature_count>=12:
+#		creature_count-=2	
 	# Update attributes
 	weather = Weather.values()[randi() % Weather.size()]
 	if weather == Weather.SUNNY:
@@ -88,11 +90,23 @@ func next_day():
 		game_over()
 	if humidity >100 || humidity < 10:
 		game_over()
+	if days ==1:
+		$ShovelButton.visible = true	
 	if days == 3:
+		$random.visible = true
+		$Panel/CheckBox.visible = false
+		$Panel/CheckBox4.visible = true
+		updateUI()
 		if creature_count < 6:	
 			game_over()
 		else:
-			addBug()	
+			addBug()
+	if days ==7:
+		updateUI()
+		if creature_count < 10 || creature_count >15:
+			game_over()
+		else:
+			pass		
 	next_day_button.nextday_end()
 #	temperature = randf_range(temperature-2, temperature+2)		
 #	humidity = randf_range(humidity-10, humidity+10)
@@ -117,8 +131,7 @@ func openCurtains():
 		temperature += 4
 		print("Curtain button pressed")
 		updateUI()
-
-	# Update other attributes and game mechanics
+		
 
 func placePlant(type):
 	# Increase creature count, humidity, and decrease temperature
@@ -227,6 +240,13 @@ func addBug():
 		get_tree().get_root().add_child(flower_instance)
 	else:
 		print("bugr_instance is null")	
+		
+func deleteplant():
+	var allplants = get_tree().get_nodes_in_group("plants")
+	if allplants.size() > 0: 
+		var index = randi() % allplants.size()
+		allplants[index].queue_free()
+		updateUI()
 
 func updateUI():
 	if action_points<=0:
@@ -234,6 +254,7 @@ func updateUI():
 		$OpenCurtainsButton.disabled = true
 		$PlantButton.disabled = true
 		$BugButton.disabled = true
+		$ShovelButton.disabled = true
 		$PlantPanel.hide()
 		next_day_button.nextday_hint()
 	if days<2:
@@ -257,7 +278,11 @@ func updateUI():
 	if creature_count > 6:
 		$Panel/CheckBox.button_pressed = true
 	elif creature_count < 6:
-		$Panel/CheckBox.button_pressed = false			
+		$Panel/CheckBox.button_pressed = false
+	if creature_count in range(10,15):
+		$Panel/CheckBox4.button_pressed = true
+	elif creature_count >15 || creature_count < 10:		
+		$Panel/CheckBox4.button_pressed = false	
 		
 func checkActionPoints():
 	if action_points>0:
@@ -271,33 +296,6 @@ func checkActionPoints():
 	
 func _on_next_day_button_pressed():
 	next_day()
-
-func _on_creature_count_label_ready():
-	pass # Replace with function body.
-
-
-func _on_temperature_label_ready():
-	pass # Replace with function body.
-
-
-func _on_humidity_progress_bar_ready():
-	pass # Replace with function body.
-
-
-func _on_humidity_progress_bar_property_list_changed():
-	pass # Replace with function body.
-
-
-func _on_humidity_progress_bar_changed():
-	pass # Replace with function body.
-
-
-func _on_days_label_ready():
-	pass # Replace with function body.
-
-
-func _on_action_points_label_ready():
-	pass # Replace with function body.
 
 
 func _on_open_curtains_button_pressed():
@@ -352,3 +350,51 @@ func _on_button_pressed():
 
 func _on_bug_button_pressed():
 	placeBug()
+
+
+
+
+func _on_dinning_pressed():
+	print("dinning!")
+	$random/dinning/before.visible = false
+	$random/dinning/after.visible = true
+	$random/dinning/Label.text = 'Grass - 2'
+	$random/kitty.disabled = true
+	$random/game.disabled = true
+	deleteplant()
+	deleteplant()
+	$random/finish.disabled = false
+	
+
+
+
+func _on_kitty_pressed():
+	$random/kitty/before.visible = false
+	$random/kitty/after.visible = true
+	$random/kitty/Label.text = 'Grass + 2'
+	$random/dinning.disabled = true
+	$random/game.disabled = true
+	addPlant(PlantType.FLOWER)
+	addPlant(PlantType.BUSH)
+	$random/finish.disabled = false
+
+
+func _on_game_pressed():
+	$random/game/before.visible = false
+	$random/game/after.visible = true
+	$random/game/Label.text = 'Temp + 5'
+	$random/dinning.disabled = true
+	$random/kitty.disabled = true
+	temperature +=5
+	$random/finish.disabled = false
+
+
+func _on_finish_pressed():
+	$random.visible = false
+	updateUI()
+
+
+func _on_shovel_button_pressed():
+	if checkActionPoints():
+		deleteplant()
+		updateUI()

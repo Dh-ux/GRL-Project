@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c54ljjqgpci6"]
+[gd_scene load_steps=34 format=3 uid="uid://c54ljjqgpci6"]
 
 [ext_resource type="Script" path="res://resource/Script/Ecosystem.gd" id="1_fni7g"]
 [ext_resource type="Texture2D" uid="uid://cmgs2wfxqwn6j" path="res://resource/Art/Background/sunny with birds.PNG" id="2_b6p65"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://64ssdo6ghwqp" path="res://resource/Art/UI/actionpoint.png" id="14_m42ou"]
 [ext_resource type="Texture2D" uid="uid://e5fe2rnlw052" path="res://resource/Art/UI/todo.png" id="15_xkqt4"]
 [ext_resource type="Script" path="res://NextDayButton.gd" id="16_bcj8g"]
+[ext_resource type="Texture2D" uid="uid://i0lf6yxwjq2i" path="res://resource/Art/UI/shovel.png" id="16_ij5hu"]
 [ext_resource type="Texture2D" uid="uid://bdrwcioodct1n" path="res://resource/Art/plantpanel/background.PNG" id="21_ldk6y"]
 [ext_resource type="Texture2D" uid="uid://bslfw5o1plgmj" path="res://resource/Art/plantpanel/common fern.PNG" id="22_dsbqx"]
 [ext_resource type="Texture2D" uid="uid://lugpqttu1of3" path="res://resource/Art/plantpanel/melasromes.PNG" id="23_ajehu"]
@@ -29,7 +30,8 @@
 [ext_resource type="AudioStream" uid="uid://qar7m06kwknm" path="res://resource/Art/music/buttonsound.mp3" id="26_xxx35"]
 [ext_resource type="Script" path="res://buttonsound.gd" id="27_rpstb"]
 [ext_resource type="Script" path="res://bgm.gd" id="29_umjo2"]
-[ext_resource type="Texture2D" uid="uid://cohx408slxtfw" path="res://resource/Art/UI/start Button.PNG" id="30_5su05"]
+[ext_resource type="Texture2D" uid="uid://dd23oiuys51l8" path="res://resource/Art/UI/Exit Button.PNG" id="30_a41t0"]
+[ext_resource type="Texture2D" uid="uid://br7ffu11d4x0d" path="res://resource/Art/UI/Credit Button.PNG" id="31_gu42k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rel1o"]
 bg_color = Color(0.980392, 0.980392, 0.980392, 1)
@@ -67,11 +69,28 @@ position = Vector2(544.727, 687.533)
 scale = Vector2(0.361277, 0.519786)
 texture = ExtResource("5_pqucr")
 
+[node name="bush" type="Node" parent="."]
+
+[node name="flower" type="Node" parent="."]
+
+[node name="plant1" type="Node" parent="."]
+
+[node name="Bug" type="Node" parent="."]
+
 [node name="Panel" type="Panel" parent="."]
 offset_left = 90.0
 offset_top = 127.0
 offset_right = 337.0
 offset_bottom = 284.0
+
+[node name="CheckBox4" type="CheckBox" parent="Panel"]
+visible = false
+offset_left = 9.87149
+offset_top = 13.8496
+offset_right = 241.871
+offset_bottom = 59.8496
+button_mask = 0
+text = "Count: 10-15"
 
 [node name="CheckBox" type="CheckBox" parent="Panel"]
 layout_mode = 0
@@ -104,6 +123,36 @@ text = "Best Humid: 70 - 90"
 position = Vector2(78.0745, -35.6133)
 scale = Vector2(0.349623, 0.386648)
 texture = ExtResource("15_xkqt4")
+
+[node name="NextDayButton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1015.87
+offset_top = 613.339
+offset_right = 1108.87
+offset_bottom = 679.339
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next"
+script = ExtResource("16_bcj8g")
+
+[node name="Sprite2D" type="Sprite2D" parent="NextDayButton"]
+z_index = 2
+position = Vector2(47.3053, 32.0166)
+scale = Vector2(0.268844, 0.351125)
+texture = ExtResource("13_2f2w0")
+
+[node name="hint" type="Sprite2D" parent="NextDayButton/Sprite2D"]
+self_modulate = Color(5, 6, 3, 1)
+z_index = -1
+scale = Vector2(1.08074, 1.06412)
+texture = ExtResource("13_2f2w0")
+
+[node name="Timer" type="Timer" parent="NextDayButton"]
 
 [node name="MistingSystemButton" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -194,6 +243,17 @@ position = Vector2(42.1782, 18.7959)
 scale = Vector2(0.372374, 0.43417)
 texture = ExtResource("8_0d2kn")
 
+[node name="ShovelButton" type="Button" parent="."]
+offset_left = 1013.17
+offset_top = 325.465
+offset_right = 1106.17
+offset_bottom = 426.465
+
+[node name="Sprite2D" type="Sprite2D" parent="ShovelButton"]
+position = Vector2(50.2551, 50.4521)
+scale = Vector2(0.387183, 0.41905)
+texture = ExtResource("16_ij5hu")
+
 [node name="TemperatureLabel" type="Label" parent="."]
 offset_left = 128.329
 offset_top = 454.069
@@ -257,44 +317,6 @@ text = ": 3"
 position = Vector2(-87.4913, 13.9846)
 scale = Vector2(0.346798, 0.371649)
 texture = ExtResource("14_m42ou")
-
-[node name="NextDayButton" type="Button" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 1015.87
-offset_top = 613.339
-offset_right = 1108.87
-offset_bottom = 679.339
-grow_horizontal = 2
-grow_vertical = 2
-text = "Next"
-script = ExtResource("16_bcj8g")
-
-[node name="Sprite2D" type="Sprite2D" parent="NextDayButton"]
-z_index = 2
-position = Vector2(47.3053, 32.0166)
-scale = Vector2(0.268844, 0.351125)
-texture = ExtResource("13_2f2w0")
-
-[node name="hint" type="Sprite2D" parent="NextDayButton/Sprite2D"]
-self_modulate = Color(5, 6, 3, 1)
-z_index = -1
-scale = Vector2(1.08074, 1.06412)
-texture = ExtResource("13_2f2w0")
-
-[node name="Timer" type="Timer" parent="NextDayButton"]
-
-[node name="bush" type="Node" parent="."]
-
-[node name="flower" type="Node" parent="."]
-
-[node name="plant1" type="Node" parent="."]
-
-[node name="Bug" type="Node" parent="."]
 
 [node name="PlantPanel" type="Panel" parent="."]
 visible = false
@@ -430,35 +452,118 @@ script = ExtResource("29_umjo2")
 stream = ExtResource("26_xxx35")
 script = ExtResource("29_umjo2")
 
-[node name="RandomEvents" type="Panel" parent="."]
-offset_right = 1153.0
-offset_bottom = 793.0
+[node name="random" type="Panel" parent="."]
+visible = false
+z_index = 1
+offset_right = 1165.0
+offset_bottom = 797.0
 
-[node name="Dinning" type="Button" parent="RandomEvents"]
-layout_mode = 2
-offset_left = 158.0
-offset_top = 173.0
-offset_right = 359.0
-offset_bottom = 501.0
-
-[node name="Sprite2D" type="Sprite2D" parent="RandomEvents/Dinning"]
-position = Vector2(128.273, 185.111)
-scale = Vector2(0.368813, 0.955439)
-texture = ExtResource("30_5su05")
-
-[node name="Label" type="Label" parent="RandomEvents/Dinning"]
+[node name="dinning" type="Button" parent="random"]
 layout_mode = 0
-offset_left = 6.22571
-offset_top = 24.8513
-offset_right = 194.226
-offset_bottom = 246.851
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Have dinner in a new restaurant"
-autowrap_mode = 3
+offset_left = 141.791
+offset_top = 138.496
+offset_right = 395.791
+offset_bottom = 500.496
 
+[node name="before" type="Sprite2D" parent="random/dinning"]
+position = Vector2(129.451, 186.881)
+scale = Vector2(0.459942, 2.82231)
+texture = ExtResource("30_a41t0")
+
+[node name="after" type="Sprite2D" parent="random/dinning"]
+visible = false
+position = Vector2(129.451, 186.881)
+scale = Vector2(0.459942, 2.82231)
+texture = ExtResource("31_gu42k")
+
+[node name="Label" type="Label" parent="random/dinning"]
+layout_mode = 0
+offset_left = 26.9222
+offset_top = 96.9472
+offset_right = 238.922
+offset_bottom = 461.947
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Dinner in a new restaurant"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="kitty" type="Button" parent="random"]
+offset_left = 465.755
+offset_top = 139.485
+offset_right = 719.755
+offset_bottom = 501.485
+
+[node name="before" type="Sprite2D" parent="random/kitty"]
+position = Vector2(129.451, 186.881)
+scale = Vector2(0.459942, 2.82231)
+texture = ExtResource("30_a41t0")
+
+[node name="after" type="Sprite2D" parent="random/kitty"]
+visible = false
+position = Vector2(129.451, 186.881)
+scale = Vector2(0.459942, 2.82231)
+texture = ExtResource("31_gu42k")
+
+[node name="Label" type="Label" parent="random/kitty"]
+layout_mode = 0
+offset_left = 24.23
+offset_top = 115.743
+offset_right = 236.23
+offset_bottom = 480.743
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Foster a kitty"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="game" type="Button" parent="random"]
+offset_left = 796.899
+offset_top = 151.356
+offset_right = 1050.9
+offset_bottom = 513.356
+
+[node name="before" type="Sprite2D" parent="random/game"]
+position = Vector2(129.451, 186.881)
+scale = Vector2(0.459942, 2.82231)
+texture = ExtResource("30_a41t0")
+
+[node name="after" type="Sprite2D" parent="random/game"]
+visible = false
+position = Vector2(129.451, 186.881)
+scale = Vector2(0.459942, 2.82231)
+texture = ExtResource("31_gu42k")
+
+[node name="Label" type="Label" parent="random/game"]
+layout_mode = 0
+offset_left = 25.1274
+offset_top = 111.786
+offset_right = 237.127
+offset_bottom = 476.786
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "GOU cooks up"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="finish" type="Button" parent="random"]
+layout_mode = 0
+offset_left = 529.471
+offset_top = 585.64
+offset_right = 640.471
+offset_bottom = 660.64
+text = "Finsh"
+
+[connection signal="ready" from="Panel/CheckBox4" to="." method="_on_check_box_ready"]
 [connection signal="ready" from="Panel/CheckBox" to="." method="_on_check_box_ready"]
 [connection signal="ready" from="Panel/CheckBox2" to="." method="_on_check_box_2_ready"]
 [connection signal="ready" from="Panel/CheckBox3" to="." method="_on_check_box_3_ready"]
+[connection signal="mouse_entered" from="NextDayButton" to="NextDayButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NextDayButton" to="NextDayButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="NextDayButton" to="." method="_on_next_day_button_pressed"]
+[connection signal="pressed" from="NextDayButton" to="NextDayButton" method="_on_pressed"]
+[connection signal="pressed" from="NextDayButton" to="buttonsound" method="_on_next_day_button_pressed"]
+[connection signal="timeout" from="NextDayButton/Timer" to="NextDayButton" method="_on_timer_timeout"]
 [connection signal="mouse_entered" from="MistingSystemButton" to="MistingSystemButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MistingSystemButton" to="MistingSystemButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="MistingSystemButton" to="." method="_on_misting_system_button_pressed"]
@@ -479,17 +584,12 @@ autowrap_mode = 3
 [connection signal="pressed" from="BugButton" to="." method="_on_bug_button_pressed"]
 [connection signal="pressed" from="BugButton" to="BugButton" method="_on_pressed"]
 [connection signal="pressed" from="BugButton" to="buttonsound" method="_on_bug_button_pressed"]
+[connection signal="pressed" from="ShovelButton" to="." method="_on_shovel_button_pressed"]
 [connection signal="ready" from="TemperatureLabel" to="." method="_on_temperature_label_ready"]
 [connection signal="ready" from="DaysLabel" to="." method="_on_days_label_ready"]
 [connection signal="ready" from="CreatureCountLabel" to="." method="_on_creature_count_label_ready"]
 [connection signal="ready" from="HumidityProgressBar" to="." method="_on_humidity_progress_bar_ready"]
 [connection signal="ready" from="Action_pointsLabel" to="." method="_on_action_points_label_ready"]
-[connection signal="mouse_entered" from="NextDayButton" to="NextDayButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="NextDayButton" to="NextDayButton" method="_on_mouse_exited"]
-[connection signal="pressed" from="NextDayButton" to="." method="_on_next_day_button_pressed"]
-[connection signal="pressed" from="NextDayButton" to="NextDayButton" method="_on_pressed"]
-[connection signal="pressed" from="NextDayButton" to="buttonsound" method="_on_next_day_button_pressed"]
-[connection signal="timeout" from="NextDayButton/Timer" to="NextDayButton" method="_on_timer_timeout"]
 [connection signal="pressed" from="PlantPanel/flower" to="." method="_on_flower_pressed"]
 [connection signal="pressed" from="PlantPanel/flower" to="buttonsound" method="_on_flower_pressed"]
 [connection signal="pressed" from="PlantPanel/bush" to="." method="_on_bush_pressed"]
@@ -499,3 +599,7 @@ autowrap_mode = 3
 [connection signal="ready" from="Sprite2D/Day" to="." method="_on_day_ready"]
 [connection signal="pressed" from="Sprite2D/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="GuidePanel/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="random/dinning" to="." method="_on_dinning_pressed"]
+[connection signal="pressed" from="random/kitty" to="." method="_on_kitty_pressed"]
+[connection signal="pressed" from="random/game" to="." method="_on_game_pressed"]
+[connection signal="pressed" from="random/finish" to="." method="_on_finish_pressed"]
