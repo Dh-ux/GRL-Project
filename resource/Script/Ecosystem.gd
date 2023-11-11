@@ -63,6 +63,7 @@ func next_day():
 	updateUI()
 #	$Sprite2D.visible = true
 	days+=1
+	action_points = 3
 	$MistingSystemButton.disabled = false
 	$OpenCurtainsButton.disabled = false
 	$PlantButton.disabled = false
@@ -85,10 +86,10 @@ func next_day():
 		$Weather.texture = load("res://resource/Art/Background/rainy.png")
 	action_points = 3	
 	updateUI()
-	await get_tree().create_timer(0.2).timeout
-	if temperature <14 || temperature > 48:
+	await get_tree().create_timer(0.15).timeout
+	if temperature <12 || temperature > 48:
 		game_over()
-	if humidity >100 || humidity < 10:
+	if humidity >101 || humidity < 5:
 		game_over()
 	if days ==1:
 		$ShovelButton.visible = true	
@@ -102,7 +103,7 @@ func next_day():
 		else:
 			addBug()
 	if days ==7:
-		if creature_count < 10 || creature_count >15:
+		if creature_count < 10 || creature_count >18:
 			game_over()
 		else:
 			pass		
@@ -195,7 +196,7 @@ func addPlant(type):
 			flower_instance.growth = randf_range(0.5,0.7)
 
 		initial_plant = true
-		get_tree().get_root().add_child(flower_instance)
+		#get_tree().get_root().add_child(flower_instance)
 
 	else:
 		print("flower_instance is null")
@@ -236,7 +237,7 @@ func addBug():
 		flower_instance.position = Vector2(random_x, random_y)
 		flower_instance.growth = new_scale
 		flower_instance.scale_modifier = randf_range(0.7,1)
-		get_tree().get_root().add_child(flower_instance)
+		#get_tree().get_root().add_child(flower_instance)
 	else:
 		print("bugr_instance is null")	
 		
@@ -382,3 +383,7 @@ func _on_shovel_button_pressed():
 	if checkActionPoints():
 		deleteplant()
 		updateUI()
+
+
+func _on_check_box_ready():
+	pass # Replace with function body.

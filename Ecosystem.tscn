@@ -565,7 +565,6 @@ offset_bottom = 712.081
 text = "Finsh"
 
 [connection signal="ready" from="Panel/CheckBox4" to="." method="_on_check_box_ready"]
-[connection signal="ready" from="Panel/CheckBox" to="." method="_on_check_box_ready"]
 [connection signal="ready" from="Panel/CheckBox2" to="." method="_on_check_box_2_ready"]
 [connection signal="ready" from="Panel/CheckBox3" to="." method="_on_check_box_3_ready"]
 [connection signal="mouse_entered" from="NextDayButton" to="NextDayButton" method="_on_mouse_entered"]
