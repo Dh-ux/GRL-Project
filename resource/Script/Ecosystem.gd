@@ -121,7 +121,9 @@ func next_day():
 		else:
 			game_over()
 	if days == 10:
-		addBug()		
+		addBug()
+	if days == 11:
+		$Sprite2D3.visible = true				
 						
 	next_day_button.nextday_end()
 #	temperature = randf_range(temperature-2, temperature+2)		
@@ -450,3 +452,7 @@ func _on_study_pressed():
 
 func _on_restart_pressed():
 	get_tree().reload_current_scene()
+
+
+func _on_menu_pressed():
+	get_tree().change_scene_to_file("res://StartMenu.tscn")
