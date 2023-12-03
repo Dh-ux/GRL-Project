@@ -3,6 +3,7 @@ extends Sprite2D
 var eco_system
 var humidity
 var temperature
+var bug_count
 
 var type
 var growth = 1
@@ -28,6 +29,7 @@ func _process(delta):
 func update_eco():
 	humidity = eco_system.humidity
 	temperature = eco_system.temperature
+	bug_count = eco_system.bug_count
 
 #here goes the main algorithm
 func calculate_growth():
@@ -64,6 +66,7 @@ func calculate_growth():
 			growth -= 0.3
 			if growth < 0:
 				queue_free()
+				bug_count -=1
 	else:
 		growth -= 0.2
 		if growth < 0:
@@ -104,9 +107,10 @@ func addPlant():
 #		# Set the plant's position 
 		flower_instance.set_global_position(Vector2(random_x, random_y))
 		flower_instance.growth = new_growth
-		flower_instance.scale_modifier = randf_range(0.2,0.4)
+		#flower_instance.scale_modifier = randf_range(0.2,0.4)
 #		flower_instance.scale_modifier = randf_range(0.2,0.4)
 		get_parent().add_child(flower_instance)
+		bug_count +=1
 	else:
 		print("bugr_instance is null")
 

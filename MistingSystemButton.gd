@@ -18,8 +18,4 @@ func _on_mouse_exited():
 
 
 func _on_pressed():
-	var tween = get_tree().create_tween()
-	tween.tween_property(self, "scale", scale*0.9, 0.06)
-	await tween.finished
-	var tween1 = get_tree().create_tween()
-	tween1.tween_property(self, "scale", scale/0.9, 0.06)
+	pass

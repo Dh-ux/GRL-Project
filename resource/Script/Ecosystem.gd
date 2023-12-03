@@ -4,11 +4,13 @@ var life_list = []
 # Ecosystem attributes
 @export var temperature = 25
 @export var humidity = 55
+@export var bug_count = 0
 var creature_count = 0
 var days=0
 signal day_end
 var action_points = 3
 var weather
+var animals
 
 var initial_plant = false
 # UI elements
@@ -94,19 +96,33 @@ func next_day():
 	if days ==1:
 		$ShovelButton.visible = true	
 	if days == 3:
-		$random.visible = true
-		$Panel/CheckBox.visible = false
-		$Panel/CheckBox4.visible = true
-		updateUI()
 		if creature_count < 6:	
 			game_over()
 		else:
 			addBug()
+		$random1.visible = true
+		$Panel/CheckBox.visible = false
+		$Panel/CheckBox4.visible = true
+		updateUI()
+	if days == 5:
+		addBug()	
 	if days ==7:
-		if creature_count < 10 || creature_count >18:
+		if creature_count < 8 || creature_count >22:
 			game_over()
+		$frog.visible = true
+		$Panel/CheckBox4.visible = false
+		$Panel/CheckBox5.visible = true
+		$Panel/CheckBox5.button_pressed = true
+		$random2.visible = true
+		addBug()	
+	if days > 7:
+		if bug_count > 0:
+			deletebug()
 		else:
-			pass		
+			game_over()
+	if days == 10:
+		addBug()		
+						
 	next_day_button.nextday_end()
 #	temperature = randf_range(temperature-2, temperature+2)		
 #	humidity = randf_range(humidity-10, humidity+10)
@@ -114,7 +130,7 @@ func next_day():
 
 
 func game_over():
-	get_tree().change_scene_to_file("res://gameover.tscn")
+	$Sprite2D2.visible = true
 			
 func activateMistingSystem():
 	# Increase humidity
@@ -175,7 +191,7 @@ func addPlant(type):
 		var random_x
 		var random_y
 		while true:
-			random_x = randf_range(450, 770)
+			random_x = randf_range(450, 680)
 			random_y = randf_range(670, 690)
 			var overlapping = false
 			# Check for overlap with existing plant positions
@@ -213,7 +229,7 @@ func addBug():
 	if flower_instance != null:
 		print("Successfully instantiated bug_instance")
 		var plant_positions = []
-		var random_x= randf_range(480, 750)
+		var random_x= randf_range(480, 700)
 		var random_y= randf_range(647, 648)
 		var new_scale = randf_range(0.5,0.8)
 		random_x = clamp(random_x,450,900)
@@ -236,7 +252,8 @@ func addBug():
 #		# Set the plant's position
 		flower_instance.position = Vector2(random_x, random_y)
 		flower_instance.growth = new_scale
-		flower_instance.scale_modifier = randf_range(0.7,1)
+		flower_instance.scale_modifier = randf_range(0.9,1)
+		bug_count+=1
 		#get_tree().get_root().add_child(flower_instance)
 	else:
 		print("bugr_instance is null")	
@@ -247,6 +264,14 @@ func deleteplant():
 		var index = randi() % allplants.size()
 		allplants[index].queue_free()
 		updateUI()
+		
+func deletebug():
+	var allbugs = get_tree().get_nodes_in_group("animals")
+	if allbugs.size() > 0: 
+		var index = randi() % allbugs.size()
+		allbugs[index].queue_free()
+		updateUI()
+		bug_count-=1		
 
 func updateUI():
 	if action_points<=0:
@@ -341,41 +366,38 @@ func _on_bug_button_pressed():
 
 func _on_dinning_pressed():
 	print("dinning!")
-	$random/dinning/before.visible = false
-	$random/dinning/after.visible = true
-	$random/dinning/Label.text = 'Grass - 2'
-	$random/kitty.disabled = true
-	$random/game.disabled = true
+	$random1/dinning/before.visible = false
+	$random1/dinning/after.visible = true
+	$random1/kitty.disabled = true
+	$random1/game.disabled = true
 	deleteplant()
 	deleteplant()
-	$random/finish.disabled = false
+	$random1/finish.disabled = false
 	
 
 
 
 func _on_kitty_pressed():
-	$random/kitty/before.visible = false
-	$random/kitty/after.visible = true
-	$random/kitty/Label.text = 'Grass + 2'
-	$random/dinning.disabled = true
-	$random/game.disabled = true
+	$random1/kitty/before.visible = false
+	$random1/kitty/after.visible = true
+	$random1/dinning.disabled = true
+	$random1/game.disabled = true
 	addPlant(PlantType.FLOWER)
 	addPlant(PlantType.BUSH)
-	$random/finish.disabled = false
+	$random1/finish.disabled = false
 
 
 func _on_game_pressed():
-	$random/game/before.visible = false
-	$random/game/after.visible = true
-	$random/game/Label.text = 'Temp + 5'
-	$random/dinning.disabled = true
-	$random/kitty.disabled = true
+	$random1/game/before.visible = false
+	$random1/game/after.visible = true
+	$random1/dinning.disabled = true
+	$random1/kitty.disabled = true
 	temperature +=5
-	$random/finish.disabled = false
+	$random1/finish.disabled = false
 
 
 func _on_finish_pressed():
-	$random.visible = false
+	$random1.visible = false
 	updateUI()
 
 
@@ -387,3 +409,44 @@ func _on_shovel_button_pressed():
 
 func _on_check_box_ready():
 	pass # Replace with function body.
+
+
+func _on_finish_1_pressed():
+	$random2.visible = false
+	updateUI()
+
+
+func _on_laundry_pressed():
+	$random2/laundry/before.visible = false
+	$random2/laundry/after.visible = true
+	$random2/lucky.disabled = true
+	$random2/study.disabled = true
+	addPlant(PlantType.PLANT)
+	humidity +=3
+	$random1/finish.disabled = false
+	
+
+
+func _on_lucky_pressed():
+	$random2/lucky/before.visible = false
+	$random2/lucky/after.visible = true
+	$random2/laundry.disabled = true
+	$random2/study.disabled = true
+	addBug()
+	addBug()
+	$random1/finish.disabled = false
+	
+
+
+func _on_study_pressed():
+	$random2/study/before.visible = false
+	$random2/study/after.visible = true
+	$random2/laundry.disabled = true
+	$random2/lucky.disabled = true
+	deletebug()
+	deletebug()
+	$random1/finish.disabled = false
+
+
+func _on_restart_pressed():
+	get_tree().reload_current_scene()

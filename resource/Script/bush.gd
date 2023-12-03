@@ -79,7 +79,7 @@ func addPlant():
 	if flower_instance != null:
 		#print("Successfully instantiated flower_instance")
 		var plant_positions = []
-		var random_x= get_global_position().x + randf_range(60, 120) * ((randi_range(0,1))*2.0-1)
+		var random_x= get_global_position().x + randf_range(60, 110) * ((randi_range(0,1))*2.0-1)
 		var random_y= get_global_position().y 
 		var new_growth = randf_range(0.3,0.6)
 		random_x = clamp(random_x,480, 750)
@@ -100,7 +100,7 @@ func addPlant():
 #		var random_x = randf_range(345, 600)  # Adjust the range as needed
 #		var random_y = randf_range(360, 380)  # Adjust the range as needed
 #		# Set the plant's position
-		flower_instance.scale_modifier = randf_range(0.1,0.2)
+		flower_instance.scale_modifier = randf_range(0.7,0.8)
 		flower_instance.position = Vector2(random_x, random_y)
 		flower_instance.growth = new_growth
 		get_parent().add_child(flower_instance)
@@ -120,7 +120,7 @@ func on_next_day():
 		addPlant()
 		growth -= 0.5
 	var temp = remap(growth,0.1,3,0.6,0.66)
-	scale = Vector2(temp,temp)*scale_modifier
+	#scale = Vector2(temp,temp)*scale_modifier
 #	# Update attributes
 #	temperature = randf_range(temperature-2, temperature+2)		
 #	humidity = randf_range(humidity-10, humidity+10)	
